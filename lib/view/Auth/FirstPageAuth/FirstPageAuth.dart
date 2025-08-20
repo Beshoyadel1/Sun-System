@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sun_system/l10n/app_localizations.dart';
 import 'package:sun_system/utiles/assets/AppColors.dart';
 import 'package:sun_system/utiles/assets/Fontspath.dart';
 import 'package:sun_system/utiles/assets/ImagePath.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sun_system/view/Auth/AuthWidget/ButtonAuth.dart';
 import 'package:sun_system/view/Auth/AuthWidget/LineAuth.dart';
 
 class FirstPageAuth extends StatefulWidget {
-  static const String RouteName = 'FirstPageAuth';
   const FirstPageAuth({super.key});
 
   @override
@@ -23,9 +22,6 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.backgroundcolor,
-      ),
       backgroundColor: AppColors.backgroundcolor,
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -41,16 +37,15 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
             Text(
               AppLocalizations.of(context)!.login,
               //textAlign: TextAlign.center,
-              style: Fontspath.w500readexPro26(
+              style: Fontspath.w500readexPro22(
                 color: AppColors.lightblackcolor,
               ),
-
             ),
             SizedBox(height: height * 0.02),
             Text(
               AppLocalizations.of(context)!.log_in_as_an_individual,
               //textAlign: TextAlign.center,
-              style: Fontspath.w400readexPro17(
+              style: Fontspath.w400readexPro14(
                 color: AppColors.lightblackcolor,
               ),
 
@@ -58,17 +53,23 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
             SizedBox(height: height * 0.03),
             Row(
               children: [
-                Buttonauth(
-                    backgroundcolor: AppColors.orangecolor.withOpacity(0.6),
-                    text: AppLocalizations.of(context)!.register_as_individuals,
-                    fontcolor: AppColors.whitecolor,),
+                Expanded(
+                  child:Buttonauth(
+                    isclick: true,
+                  backgroundcolor: AppColors.orangecolor.withOpacity(0.6),
+                  text: AppLocalizations.of(context)!.register_as_individuals,
+                  fontcolor: AppColors.whitecolor,)
+                  ,),
+
                 SizedBox(
                   width: width*0.02,
                 ),
-                Buttonauth(
-                    backgroundcolor: AppColors.darkbluecolor.withOpacity(0.6),
-                    text: AppLocalizations.of(context)!.register_as_companies,
-                  fontcolor: AppColors.whitecolor,)
+                Expanded(child: Buttonauth(
+                  isclick: true,
+                  backgroundcolor: AppColors.darkbluecolor.withOpacity(0.6),
+                  text: AppLocalizations.of(context)!.register_as_companies,
+                  fontcolor: AppColors.whitecolor,)),
+
               ],
             ),
             SizedBox(height: height * 0.05),
@@ -90,20 +91,27 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
             SizedBox(height: height * 0.02),
             Row(
               children: [
-                Buttonauth(
+                Expanded(
+                  child: Buttonauth(
+                    isclick: true,
                   backgroundcolor: AppColors.linecolor,
                   text: AppLocalizations.of(context)!.apple_account,
                   fontcolor: AppColors.darkbluecolor,
                   image: ImagePath.apple,
                 ),
+                ),
+
                 SizedBox(
                   width: width*0.035,
                 ),
-                Buttonauth(
+                Expanded(
+                  child: Buttonauth(
+                    isclick: true,
                   backgroundcolor: AppColors.linecolor,
                   text: AppLocalizations.of(context)!.google,
                   fontcolor: AppColors.darkbluecolor,
-                  image: ImagePath.google,)
+                  image: ImagePath.google,),
+                )
               ],
             ),
             SizedBox(height: height * 0.02),
@@ -113,14 +121,16 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
                 Text(AppLocalizations.of(context)!.you_dont_have_an_account,style:Fontspath.w600LamaSans16(color: AppColors.blackcolor),),
                 SizedBox(width: width * 0.02),
                 InkWell(
-                  onTap: (){},
+                  onTap: (){
+                    Get.toNamed('/login');// Removes previous page from stack
+                  },
                   child:Text(AppLocalizations.of(context)!.register_here,style:Fontspath.w600LamaSans14underline(
                       color: AppColors.orangecolor,
                   ),)
                   ,
                 )
               ],
-            )
+            ),
           ],
         ),
       ),

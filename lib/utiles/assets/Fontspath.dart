@@ -9,6 +9,22 @@ class Fontspath {
       color: color,
     );
   }
+  static TextStyle? w400readexPro12({required Color color}) {
+    return GoogleFonts.readexPro(
+      decoration: TextDecoration.none,
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
+  static TextStyle? w400readexPro14({required Color color}) {
+    return GoogleFonts.readexPro(
+      decoration: TextDecoration.none,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: color,
+    );
+  }
   static TextStyle? w400readexPro16({required Color color}) {
     return GoogleFonts.readexPro(
       decoration: TextDecoration.none,

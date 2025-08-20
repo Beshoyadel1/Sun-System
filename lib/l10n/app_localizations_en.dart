@@ -86,4 +86,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get you_dont_have_an_account => 'You dont have an account';
   @override
   String get register_here => 'Register here';
+  @override
+  String get please_enter_your_phone => 'Please enter your phone number and password.';
+  @override
+  String get redeem_here => 'Redeem here';
+  @override
+  String get login_as_a_guest_user => 'Login as a guest user';
+  @override
+  String get registeranewaccount => 'Register a new account';
+  @override
+  String get Pleaseenteryouraccountinformationandpassword => 'Please enter your account information and password.';
+  @override
+  String get createanaccountinthenameofacompany => 'Create an account in the name of a company';
+  @override
+  String get confirmPassword => 'Confirm Password';
+  @override
+  String get pleaseenterthepasswordsenttoyourphonenumber => 'Confirm Password Please enter the password sent to your phone number';
+  @override
+  String get ididnotreceiveamessage => 'I did not receive a message';
+  @override
+  String get resend => 'Resend';
 }
