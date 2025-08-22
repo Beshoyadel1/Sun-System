@@ -23,7 +23,9 @@ class OtpCubit extends Cubit<OtpState> {
     });
   }
 
-  void dispose() {
-    _timer?.cancel();
+  @override
+  Future<void> close() {
+    _timer?.cancel(); // ✅ ينظف التايمر
+    return super.close();
   }
 }

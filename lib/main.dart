@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:sun_system/Controller/Cubit/LanguageBloc/language_bloc.dart';
 import 'package:sun_system/Controller/Cubit/LanguageBloc/language_state.dart';
 import 'package:sun_system/Controller/Cubit/OtpCubit/OtpCubit.dart';
-import 'package:sun_system/l10n/app_localizations.dart';
+import 'package:sun_system/Controller/Cubit/language.dart';
 import 'package:sun_system/view/Auth/FirstPageAuth/FirstPageAuth.dart';
 import 'package:sun_system/view/Auth/Login/Login.dart';
 import 'package:sun_system/view/Auth/OTP/OTP.dart';
 import 'package:sun_system/view/Auth/Signup/Signup.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,23 +28,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.width);
     return BlocBuilder<LanguageBloc, LanguageState>(
       builder: (context, state) {
-        return GetMaterialApp(   // <-- Use GetMaterialApp here
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: Locale(state.languageCode),
-          themeMode: ThemeMode.light,
-          initialRoute: '/',
-          getPages: [
-            GetPage(name: '/', page: () => FirstPageAuth()),
-            GetPage(name: '/login', page: () => Login()),
-            GetPage(name: '/Signup', page: () => Signup()),
-            GetPage(name: '/Otp', page: () => Otp()),
+        final currentLocale = Locale(state.languageCode);
+        return MaterialApp(
+          locale: const Locale('ar'),
+          supportedLocales: supportedLocales,
+          localizationsDelegates: const [
+            AppLocalizationsDelegate(),
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
           ],
+          builder: (context, child) {
+            return Directionality(
+              textDirection: TextDirection.rtl, // English is LTR
+              child: child!,
+            );
+          },
+          home: const FirstPageAuth(),
         );
       },
     );
+
   }
 }

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:sun_system/Controller/Cubit/OtpCubit/OtpCubit.dart';
 import 'package:sun_system/Controller/Cubit/OtpCubit/OtpState.dart';
 import 'package:sun_system/utiles/assets/AppColors.dart';
+import 'package:sun_system/utiles/assets/FontSelectionData.dart';
 import 'package:sun_system/utiles/assets/Fontspath.dart';
 import 'package:sun_system/utiles/assets/ImagePath.dart';
-import 'package:sun_system/l10n/app_localizations.dart';
+import 'package:sun_system/utiles/assets/ValuesOfAllApp.dart';
+import 'package:sun_system/view/Auth/Login/Login.dart';
+import 'package:sun_system/view/customWidget/AppText.dart';
 import 'package:sun_system/view/Auth/AuthWidget/OtpInputRow.dart';
+import 'package:sun_system/view/Auth/AuthWidget/backgroundDesktop.dart';
+import 'package:sun_system/view/customWidget/NavigateToPageWidget.dart';
 
 class Otp extends StatefulWidget {
   const Otp({super.key});
@@ -26,6 +30,7 @@ class _OtpState extends State<Otp> {
   @override
   void initState() {
     super.initState();
+    // شغّل التايمر مرة واحدة لما الصفحة تتفتح
     context.read<OtpCubit>().startTimer();
     _listenOtpFields();
   }
@@ -35,7 +40,9 @@ class _OtpState extends State<Otp> {
       controller.addListener(() {
         bool allFilled = _controllers.every((c) => c.text.isNotEmpty);
         if (allFilled) {
-          Get.offAllNamed('/login');
+          Navigator.of(context).push(
+            NavigateToPageWidget(const Login()),
+          );
         }
       });
     }
@@ -43,7 +50,7 @@ class _OtpState extends State<Otp> {
 
   @override
   void dispose() {
-    context.read<OtpCubit>().dispose();
+    // ❌ متستدعيش context.read<OtpCubit>() هنا
     for (var c in _controllers) {
       c.dispose();
     }
@@ -55,81 +62,105 @@ class _OtpState extends State<Otp> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    Size size = MediaQuery.of(context).size;
+    bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
+    bool isTablet =
+        size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
+    bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: SafeArea(
+        child: Row(
           children: [
-            SizedBox(height: height * 0.03),
-            Image.asset(ImagePath.logo, height: height * 0.09),
-            SizedBox(height: height * 0.05),
-            Text(
-              AppLocalizations.of(context)!.confirmPassword,
-              style: Fontspath.w500readexPro22(
-                color: AppColors.lightblackcolor,
-              ),
-            ),
-            SizedBox(height: height * 0.02),
-            Text(
-              AppLocalizations.of(context)!
-                  .pleaseenterthepasswordsenttoyourphonenumber,
-              style: Fontspath.w400readexPro14(
-                color: AppColors.lightblackcolor,
-              ),
-            ),
-            SizedBox(height: height * 0.05),
-
-            /// OTP Input Row
-            OtpInputRow(
-              controllers: _controllers,
-              focusNodes: _focusNodes,
-            ),
-
-            SizedBox(height: height * 0.05),
-
-            /// Timer & Resend
-            BlocBuilder<OtpCubit, OtpState>(
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    Text(
-                      state.canResend ? "" : "${state.secondsRemaining}s",
-                      style: Fontspath.w400readexPro16(
-                        color: AppColors.blackcolor,
-                      ),
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(20),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: isMobile ? 500 : isTablet ? 700 : 900,
                     ),
-                    SizedBox(height: height * 0.05),
-                    Row(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
-                          AppLocalizations.of(context)!.ididnotreceiveamessage,
-                          style: Fontspath.w400readexPro16(
-                            color: AppColors.blackcolor,
+                        const SizedBox(height: 30),
+                        Image.asset(ImagePath.logo, height: 80),
+                        const SizedBox(height: 40),
+                        AppText(
+                          text: 'confirmPassword',
+                          style: Fontspath.w500readexPro22(
+                            fontWeightIndex: FontSelectionData.fontW500,
+                            color: AppColors.lightblackcolor,
                           ),
                         ),
-                        SizedBox(width: width * 0.02),
-                        InkWell(
-                          onTap: state.canResend
-                              ? () => context.read<OtpCubit>().startTimer()
-                              : null,
-                          child: Text(
-                            AppLocalizations.of(context)!.resend,
-                            style: Fontspath.w400readexPro16(
-                              color: AppColors.orangecolor,
-                            ),
+                        const SizedBox(height: 15),
+                        AppText(
+                          text: 'pleaseenterthepasswordsenttoyourphonenumber',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.lightblackcolor,
                           ),
+                        ),
+                        const SizedBox(height: 40),
+
+                        OtpInputRow(
+                          controllers: _controllers,
+                          focusNodes: _focusNodes,
+                        ),
+                        const SizedBox(height: 40),
+
+                        BlocBuilder<OtpCubit, OtpState>(
+                          builder: (context, state) {
+                            return Column(
+                              children: [
+                                AppText(
+                                  text: state.canResend
+                                      ? ""
+                                      : "${state.secondsRemaining}s",
+                                  style: Fontspath.w400readexPro16(
+                                    fontWeightIndex: FontSelectionData.fontW400,
+                                    color: AppColors.blackcolor,
+                                  ),
+                                ),
+                                const SizedBox(height: 40),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    AppText(
+                                      text: 'ididnotreceiveamessage',
+                                      style: Fontspath.w400readexPro16(
+                                        fontWeightIndex: FontSelectionData.fontW400,
+                                        color: AppColors.blackcolor,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    InkWell(
+                                      onTap: state.canResend
+                                          ? () => context.read<OtpCubit>().startTimer()
+                                          : null,
+                                      child: AppText(
+                                        text: 'resend',
+                                        style: Fontspath.w400readexPro16(
+                                          fontWeightIndex: FontSelectionData.fontW400,
+                                          color: AppColors.orangecolor,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            );
+                          },
                         ),
                       ],
                     ),
-                  ],
-                );
-              },
+                  ),
+                ),
+              ),
             ),
+            if (isDesktop) backgroundDesktop(),
           ],
         ),
       ),

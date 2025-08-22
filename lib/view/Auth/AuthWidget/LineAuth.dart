@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sun_system/utiles/assets/AppColors.dart';
 
@@ -7,12 +6,10 @@ class LineAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Divider(
-        color: AppColors.linecolor.withOpacity(0.6),
-        thickness: 1,
-        endIndent: 10,
-      ),
+    return Divider(
+      color: AppColors.linecolor.withOpacity(0.6),
+      thickness: 1,
+      endIndent: 10,
     );
   }
 }

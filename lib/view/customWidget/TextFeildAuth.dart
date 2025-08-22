@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sun_system/utiles/assets/AppColors.dart';
 
-class Textfeildauth extends StatefulWidget {
+class AppTextFeild extends StatefulWidget {
   final bool isPassword;
   final bool isNumber;
   final TextEditingController? controller;
   final Function(String)? onChanged;
 
-  const Textfeildauth({
+  const AppTextFeild({
     super.key,
     this.isPassword = false,
     this.isNumber = false,
@@ -17,10 +17,10 @@ class Textfeildauth extends StatefulWidget {
   });
 
   @override
-  State<Textfeildauth> createState() => _TextfeildauthState();
+  State<AppTextFeild> createState() => _AppTextFeildState();
 }
 
-class _TextfeildauthState extends State<Textfeildauth> {
+class _AppTextFeildState extends State<AppTextFeild> {
   TextAlign _textAlign = TextAlign.start;
   TextDirection _textDirection = TextDirection.ltr;
 
@@ -33,6 +33,7 @@ class _TextfeildauthState extends State<Textfeildauth> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return TextField(
       controller: widget.controller,
       textAlign: _textAlign,
@@ -42,32 +43,35 @@ class _TextfeildauthState extends State<Textfeildauth> {
       inputFormatters:
       widget.isNumber ? [FilteringTextInputFormatter.digitsOnly] : null,
       decoration: InputDecoration(
-        contentPadding:
-        EdgeInsets.symmetric(vertical: height * 0.01, horizontal: width * 0.04),
+        contentPadding: EdgeInsets.symmetric(
+            vertical: height * 0.01,
+            horizontal: width * 0.01),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: AppColors.graycolor.withOpacity(0.5), width: 1),
+          borderSide:
+          BorderSide(color: AppColors.graycolor.withOpacity(0.5), width: 1),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(35),
-          borderSide: BorderSide(color: AppColors.orangecolor.withOpacity(0.7), width: 1),
+          borderSide:
+          BorderSide(color: AppColors.orangecolor.withOpacity(0.7), width: 1),
         ),
       ),
       onChanged: (value) {
         if (value.isNotEmpty) {
-          if (_isArabic(value.characters.first)) {
+          if (_isArabic(value[0])) {
             setState(() {
               _textAlign = TextAlign.end;
-              _textDirection = TextDirection.ltr;
+              _textDirection = TextDirection.rtl; // صحيح للعربي
             });
           } else {
             setState(() {
               _textAlign = TextAlign.start;
-              _textDirection = TextDirection.rtl;
+              _textDirection = TextDirection.ltr; // صحيح للانجليزي
             });
           }
         }
-        if (widget.onChanged != null) widget.onChanged!(value);
+        widget.onChanged?.call(value);
       },
     );
   }

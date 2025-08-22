@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sun_system/utiles/assets/AppColors.dart';
 import 'package:sun_system/utiles/assets/Fontspath.dart';
+import 'package:sun_system/view/customWidget/AppText.dart';
 
-class Buttonauth extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final String text;
   final Color backgroundcolor;
   final Color fontcolor;
@@ -11,7 +12,7 @@ class Buttonauth extends StatelessWidget {
   final bool isclick;
   final VoidCallback? onTap;
 
-  const Buttonauth({
+  const AppButton({
     super.key,
     required this.backgroundcolor,
     required this.text,
@@ -32,8 +33,8 @@ class Buttonauth extends StatelessWidget {
           color: backgroundcolor,
           borderRadius: BorderRadius.circular(30),
         ),
-        child: image ==null?Text(
-          text,
+        child: image ==null?AppText(
+          text:text,
           style: TextStyle(
             color: fontcolor,
             fontWeight: FontWeight.bold,
@@ -42,8 +43,8 @@ class Buttonauth extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                  text,
+                AppText(
+                  text:text,
                   style: TextStyle(
                     color: fontcolor,
                     fontWeight: FontWeight.bold,

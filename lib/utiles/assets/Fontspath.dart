@@ -1,88 +1,146 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sun_system/utiles/assets/FontSelectionData.dart';
 class Fontspath {
-  static TextStyle? w400readexPro17({required Color color}) {
-    return GoogleFonts.readexPro(
-      decoration: TextDecoration.none,
-      fontSize: 17,
-      fontWeight: FontWeight.w400,
-      color: color,
-    );
-  }
-  static TextStyle? w400readexPro12({required Color color}) {
-    return GoogleFonts.readexPro(
-      decoration: TextDecoration.none,
-      fontSize: 12,
-      fontWeight: FontWeight.w400,
-      color: color,
-    );
-  }
-  static TextStyle? w400readexPro14({required Color color}) {
-    return GoogleFonts.readexPro(
-      decoration: TextDecoration.none,
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: color,
-    );
-  }
-  static TextStyle? w400readexPro16({required Color color}) {
-    return GoogleFonts.readexPro(
-      decoration: TextDecoration.none,
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      color: color,
-    );
-  }
-  static TextStyle? w500readexPro18({required Color color}) {
-    return GoogleFonts.readexPro(
-      decoration: TextDecoration.none,
-      fontSize: 18,
-      fontWeight: FontWeight.w500,
-      color: color,
-    );
-  }
-  static TextStyle? w500readexPro22({required Color color}) {
-    return GoogleFonts.readexPro(
-      decoration: TextDecoration.none,
-      fontSize: 22,
-      fontWeight: FontWeight.w500,
-      color: color,
-    );
-  }
-  static TextStyle? w500readexPro26({required Color color}) {
-    return GoogleFonts.readexPro(
-      decoration: TextDecoration.none,
-      fontSize: 26,
-      fontWeight: FontWeight.w500,
-      color: color,
-    );
-  }
-  static TextStyle w600LamaSans16({required Color color}) {
+
+ static TextStyle w400readexPro17({
+    required Color color,
+    double fontSize = 17,
+    int? fontWeightIndex,
+  }) {
     return TextStyle(
-      fontFamily: 'LamaSans',
-      decoration: TextDecoration.none,
-      fontSize: 16,
-      fontWeight: FontWeight.w600, // SemiBold
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
       color: color,
+      decoration: TextDecoration.none,
     );
   }
-  static TextStyle w600LamaSans18({required Color color}) {
+
+ static TextStyle w400readexPro12({
+    required Color color,
+    double fontSize = 12,
+    int? fontWeightIndex,
+  }) {
     return TextStyle(
-      fontFamily: 'LamaSans',
-      decoration: TextDecoration.none,
-      fontSize: 18,
-      fontWeight: FontWeight.w600, // SemiBold
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
       color: color,
+      decoration: TextDecoration.none,
     );
   }
-  static TextStyle w600LamaSans14underline({required Color color}) {
+
+ static TextStyle w400readexPro14({
+    required Color color,
+    double fontSize = 14,
+    int? fontWeightIndex,
+  }) {
     return TextStyle(
-      fontFamily: 'LamaSans',
-      fontSize: 14,
-      decoration: TextDecoration.underline,
-      fontWeight: FontWeight.w600, // SemiBold
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
+      color: color,
+      decoration: TextDecoration.none,
+    );
+  }
+
+ static TextStyle w400readexPro16({
+    required Color color,
+    double fontSize = 16,
+    int? fontWeightIndex,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
+      color: color,
+      decoration: TextDecoration.none,
+    );
+  }
+
+ static TextStyle w500readexPro18({
+    required Color color,
+    double fontSize = 18,
+    int? fontWeightIndex,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
+      color: color,
+      decoration: TextDecoration.none,
+    );
+  }
+
+ static TextStyle w500readexPro22({
+    required Color color,
+    double fontSize = 22,
+    int? fontWeightIndex,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
+      color: color,
+      decoration: TextDecoration.none,
+    );
+  }
+
+ static TextStyle w500readexPro26({
+    required Color color,
+    double fontSize = 26,
+    int? fontWeightIndex,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
+      color: color,
+      decoration: TextDecoration.none,
+    );
+  }
+
+ static TextStyle w600LamaSans16({
+    required Color color,
+    double fontSize = 16,
+    int? fontWeightIndex,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
+      color: color,
+      decoration: TextDecoration.none,
+    );
+  }
+
+ static TextStyle w600LamaSans18({
+    required Color color,
+    double fontSize = 18,
+    int? fontWeightIndex,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
+      color: color,
+      decoration: TextDecoration.none,
+    );
+  }
+
+ static TextStyle w600LamaSans14underline({
+    required Color color,
+    double fontSize = 14,
+    int? fontWeightIndex,
+  }) {
+    return TextStyle(
+      fontFamily: AppFonts.lamaSansFontFamily,
+      fontWeight: fontWeightSelection(fontWeightIndex: fontWeightIndex),
+      fontSize: fontSize,
       color: color,
       decorationColor:color,
+      decoration: TextDecoration.underline,
     );
   }
 }

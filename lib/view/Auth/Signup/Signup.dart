@@ -1,13 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sun_system/utiles/assets/AppColors.dart';
-import 'package:sun_system/l10n/app_localizations.dart';
+import 'package:sun_system/utiles/assets/FontSelectionData.dart';
 import 'package:sun_system/utiles/assets/Fontspath.dart';
 import 'package:sun_system/utiles/assets/ImagePath.dart';
-import 'package:sun_system/view/Auth/AuthWidget/ButtonAuth.dart';
-import 'package:sun_system/view/Auth/AuthWidget/TextFeildAuth.dart';
-import 'package:get/get.dart';
+import 'package:sun_system/utiles/assets/ValuesOfAllApp.dart';
+import 'package:sun_system/view/Auth/OTP/OTP.dart';
+import 'package:sun_system/view/customWidget/AppButton.dart';
+import 'package:sun_system/view/customWidget/AppText.dart';
+import 'package:sun_system/view/customWidget/NavigateToPageWidget.dart';
+import 'package:sun_system/view/customWidget/TextFeildAuth.dart';
+import 'package:sun_system/view/Auth/AuthWidget/backgroundDesktop.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -59,157 +61,204 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    Size size = MediaQuery.of(context).size;
+
+    /// Breakpoints
+    bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
+    bool isTablet =
+        size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
+    bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
+
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: height * 0.03),
-              Image.asset(
-                ImagePath.logo,
-                height: height * 0.09,
-              ),
-              SizedBox(height: height * 0.05),
-              Text(
-                AppLocalizations.of(context)!.registeranewaccount,
-                style: Fontspath.w500readexPro22(
-                  color: AppColors.lightblackcolor,
-                ),
-              ),
-              SizedBox(height: height * 0.02),
-              Text(
-                AppLocalizations.of(context)!
-                    .Pleaseenteryouraccountinformationandpassword,
-                style: Fontspath.w400readexPro14(
-                  color: AppColors.lightblackcolor,
-                ),
-              ),
-              SizedBox(height: height * 0.03),
+      body: SafeArea(
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(20),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: isMobile ? 500 : isTablet ? 700 : 900,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const SizedBox(height: 30),
 
-              // Username
-              Text(
-                AppLocalizations.of(context)!.username,
-                style: Fontspath.w400readexPro14(
-                  color: AppColors.darkblackcolor,
-                ),
-              ),
-              SizedBox(height: height * 0.02),
-              Textfeildauth(
-                controller: _usernameController,
-                onChanged: (_) => _validateForm(),
-              ),
+                        /// Logo
+                        Image.asset(ImagePath.logo, height: 80),
+                        const SizedBox(height: 40),
 
-              SizedBox(height: height * 0.03),
-
-              // Phone
-              Text(
-                AppLocalizations.of(context)!.phone_number,
-                style: Fontspath.w400readexPro14(
-                  color: AppColors.darkblackcolor,
-                ),
-              ),
-              SizedBox(height: height * 0.02),
-              Textfeildauth(
-                controller: _phoneController,
-                isNumber: true,
-                onChanged: (_) => _validateForm(),
-              ),
-
-              SizedBox(height: height * 0.03),
-
-              // Email
-              Text(
-                AppLocalizations.of(context)!.email,
-                style: Fontspath.w400readexPro14(
-                  color: AppColors.darkblackcolor,
-                ),
-              ),
-              SizedBox(height: height * 0.02),
-              Textfeildauth(
-                controller: _emailController,
-                onChanged: (_) => _validateForm(),
-              ),
-
-              SizedBox(height: height * 0.03),
-
-              // Password
-              Text(
-                AppLocalizations.of(context)!.password,
-                style: Fontspath.w400readexPro14(
-                  color: AppColors.darkblackcolor,
-                ),
-              ),
-              SizedBox(height: height * 0.02),
-              Textfeildauth(
-                controller: _passwordController,
-                isPassword: true,
-                onChanged: (_) => _validateForm(),
-              ),
-
-              SizedBox(height: height * 0.03),
-
-              // Re-Password
-              Text(
-                AppLocalizations.of(context)!.re_password,
-                style: Fontspath.w400readexPro14(
-                  color: AppColors.darkblackcolor,
-                ),
-              ),
-              SizedBox(height: height * 0.02),
-              Textfeildauth(
-                controller: _rePasswordController,
-                isPassword: true,
-                onChanged: (_) => _validateForm(),
-              ),
-
-              SizedBox(height: height * 0.03),
-              Buttonauth(
-                isclick: isClick,
-                backgroundcolor:
-                isClick ? AppColors.orangecolor : AppColors.graycolor,
-                text: AppLocalizations.of(context)!.create_account,
-                fontcolor: AppColors.whitecolor,
-                onTap: () {
-                  if (isClick) {
-                    Get.toNamed('/Otp');
-                  } else {
-                    // لو حابب تضيف رسالة خطأ
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          "Please fill all fields and make sure passwords match",
-                          style: TextStyle(color: Colors.white),
+                        /// Title
+                        AppText(
+                          text: 'registeranewaccount',
+                          style: Fontspath.w500readexPro22(
+                            fontWeightIndex: FontSelectionData.fontW500,
+                            color: AppColors.lightblackcolor,
+                          ),
                         ),
-                        backgroundColor: Colors.red,
-                      ),
-                    );
-                  }
-                },
-              ),
-              SizedBox(height: height * 0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppLocalizations.of(context)!.createanaccountinthenameofacompany,
-                    style: Fontspath.w600LamaSans16(color: AppColors.blackcolor),),
-                  SizedBox(width: width * 0.02),
-                  InkWell(
-                    onTap: (){
+                        const SizedBox(height: 15),
 
-                    },
-                    child:  Text(AppLocalizations.of(context)!.register_here
-                      , style: Fontspath.w600LamaSans14underline(color: AppColors.orangecolor),),
-                  )
-                ],
+                        /// Subtitle
+                        AppText(
+                          text: 'Pleaseenteryouraccountinformationandpassword',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.lightblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 30),
+
+                        /// Username
+                        AppText(
+                          text: 'username',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.darkblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        AppTextFeild(
+                          controller: _usernameController,
+                          onChanged: (_) => _validateForm(),
+                        ),
+
+                        const SizedBox(height: 25),
+
+                        /// Phone
+                        AppText(
+                          text: 'phone_number',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.darkblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        AppTextFeild(
+                          controller: _phoneController,
+                          isNumber: true,
+                          onChanged: (_) => _validateForm(),
+                        ),
+
+                        const SizedBox(height: 25),
+
+                        /// Email
+                        AppText(
+                          text: 'email',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.darkblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        AppTextFeild(
+                          controller: _emailController,
+                          onChanged: (_) => _validateForm(),
+                        ),
+
+                        const SizedBox(height: 25),
+
+                        /// Password
+                        AppText(
+                          text: 'password',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.darkblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        AppTextFeild(
+                          controller: _passwordController,
+                          isPassword: true,
+                          onChanged: (_) => _validateForm(),
+                        ),
+
+                        const SizedBox(height: 25),
+
+                        /// Re-Password
+                        AppText(
+                          text: 're_password',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.darkblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        AppTextFeild(
+                          controller: _rePasswordController,
+                          isPassword: true,
+                          onChanged: (_) => _validateForm(),
+                        ),
+
+                        const SizedBox(height: 30),
+
+                        /// Create Account Button
+                        AppButton(
+                          isclick: isClick,
+                          backgroundcolor: isClick
+                              ? AppColors.orangecolor
+                              : AppColors.graycolor,
+                          text: 'create_account',
+                          fontcolor: AppColors.whitecolor,
+                          onTap: () {
+                            if (isClick) {
+                              Navigator.of(context).push(
+                                  NavigateToPageWidget(const Otp())
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: AppText(
+                                    text:
+                                    "Please fill all fields and make sure passwords match",
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                  backgroundColor: AppColors.blackcolor,
+                                ),
+                              );
+                            }
+                          },
+                        ),
+
+                        const SizedBox(height: 30),
+
+                        /// Company Account Redirect
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AppText(
+                              text: 'createanaccountinthenameofacompany',
+                              style: Fontspath.w600LamaSans16(
+                                color: AppColors.blackcolor,
+                                fontWeightIndex: FontSelectionData.fontW600,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            InkWell(
+                              onTap: () {},
+                              child: AppText(
+                                text: 'register_here',
+                                style: Fontspath.w600LamaSans14underline(
+                                  color: AppColors.orangecolor,
+                                  fontWeightIndex: FontSelectionData.fontW600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            ],
-          ),
+            ),
+
+            /// Left Panel only for Desktop
+            if (isDesktop) backgroundDesktop(),
+          ],
         ),
       ),
     );

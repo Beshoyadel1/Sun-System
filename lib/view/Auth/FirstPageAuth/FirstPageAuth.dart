@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:sun_system/l10n/app_localizations.dart';
 import 'package:sun_system/utiles/assets/AppColors.dart';
+import 'package:sun_system/utiles/assets/FontSelectionData.dart';
 import 'package:sun_system/utiles/assets/Fontspath.dart';
 import 'package:sun_system/utiles/assets/ImagePath.dart';
-import 'package:sun_system/view/Auth/AuthWidget/ButtonAuth.dart';
+import 'package:sun_system/utiles/assets/ValuesOfAllApp.dart';
+import 'package:sun_system/view/Auth/AuthWidget/backgroundDesktop.dart';
+import 'package:sun_system/view/Auth/Login/Login.dart';
+import 'package:sun_system/view/customWidget/AppButton.dart';
+import 'package:sun_system/view/customWidget/AppText.dart';
 import 'package:sun_system/view/Auth/AuthWidget/LineAuth.dart';
+import 'package:sun_system/view/customWidget/NavigateToPageWidget.dart';
 
 class FirstPageAuth extends StatefulWidget {
   const FirstPageAuth({super.key});
@@ -18,119 +21,161 @@ class FirstPageAuth extends StatefulWidget {
 class _FirstPageAuthState extends State<FirstPageAuth> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    Size size = MediaQuery.of(context).size;
+
+    bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
+    bool isTablet = size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
+    bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: Row(
           children: [
-            Image.asset(
-              ImagePath.logo,
-              height: height * 0.09,
-            ),
-            SizedBox(height: height * 0.05),
-            Text(
-              AppLocalizations.of(context)!.login,
-              //textAlign: TextAlign.center,
-              style: Fontspath.w500readexPro22(
-                color: AppColors.lightblackcolor,
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(20),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: isMobile ? 500 : isTablet ? 700 : 900,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        /// Logo
+                        Image.asset(ImagePath.logo, height: 80),
+                        const SizedBox(height: 30),
+                        /// Title
+                        AppText(
+                          text: 'login',
+                          style: Fontspath.w500readexPro22(
+                            fontWeightIndex: FontSelectionData.fontW500,
+                            color: AppColors.lightblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        /// Subtitle
+                        AppText(
+                          text: 'log_in_as_an_individual',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.lightblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 25),
+                        /// Auth Buttons
+                        Row(
+                          children: [
+                            Expanded(
+                              child: AppButton(
+                                isclick: true,
+                                backgroundcolor:
+                                AppColors.orangecolor.withOpacity(0.6),
+                                text: 'register_as_individuals',
+                                fontcolor: AppColors.whitecolor,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: AppButton(
+                                isclick: true,
+                                backgroundcolor:
+                                AppColors.darkbluecolor.withOpacity(0.6),
+                                text: 'register_as_companies',
+                                fontcolor: AppColors.whitecolor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 40),
+                        /// Car image (only for Mobile/Tablet)
+                        if (!isDesktop)
+                          Image.asset(ImagePath.car, height: 120),
+                        if (!isDesktop) const SizedBox(height: 40),
+                        /// Divider with text
+                        Row(
+                          children: [
+                            const Expanded(child: LineAuth()),
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 8),
+                              child: AppText(
+                                text: 'or_register_via',
+                                style: Fontspath.w400readexPro16(
+                                  fontWeightIndex: FontSelectionData.fontW400,
+                                  color: AppColors.darkbluecolor,
+                                ),
+                              ),
+                            ),
+                            const Expanded(child: LineAuth()),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        /// Social login buttons
+                        Row(
+                          children: [
+                            Expanded(
+                              child: AppButton(
+                                isclick: true,
+                                backgroundcolor: AppColors.linecolor,
+                                text: 'apple_account',
+                                fontcolor: AppColors.darkbluecolor,
+                                image: ImagePath.apple,
+                              ),
+                            ),
+                            const SizedBox(width: 15),
+                            Expanded(
+                              child: AppButton(
+                                isclick: true,
+                                backgroundcolor: AppColors.linecolor,
+                                text: 'google',
+                                fontcolor: AppColors.darkbluecolor,
+                                image: ImagePath.google,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 30),
+                        /// Register link
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AppText(
+                              text: 'you_dont_have_an_account',
+                              style: Fontspath.w600LamaSans16(
+                                fontWeightIndex: FontSelectionData.fontW600,
+                                color: AppColors.blackcolor,
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                    NavigateToPageWidget(const Login())
+                                );
+                              },
+                              child: AppText(
+                                text: 'register_here',
+                                style: Fontspath.w600LamaSans14underline(
+                                  fontWeightIndex: FontSelectionData.fontW600,
+                                  color: AppColors.orangecolor,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
-            SizedBox(height: height * 0.02),
-            Text(
-              AppLocalizations.of(context)!.log_in_as_an_individual,
-              //textAlign: TextAlign.center,
-              style: Fontspath.w400readexPro14(
-                color: AppColors.lightblackcolor,
-              ),
-
-            ),
-            SizedBox(height: height * 0.03),
-            Row(
-              children: [
-                Expanded(
-                  child:Buttonauth(
-                    isclick: true,
-                  backgroundcolor: AppColors.orangecolor.withOpacity(0.6),
-                  text: AppLocalizations.of(context)!.register_as_individuals,
-                  fontcolor: AppColors.whitecolor,)
-                  ,),
-
-                SizedBox(
-                  width: width*0.02,
-                ),
-                Expanded(child: Buttonauth(
-                  isclick: true,
-                  backgroundcolor: AppColors.darkbluecolor.withOpacity(0.6),
-                  text: AppLocalizations.of(context)!.register_as_companies,
-                  fontcolor: AppColors.whitecolor,)),
-
-              ],
-            ),
-            SizedBox(height: height * 0.05),
-            Image.asset(
-                ImagePath.car,
-              height:height*0.15,
-            ),
-            SizedBox(height: height * 0.05),
-            Row(
-              children: [
-                LineAuth(),
-                Text(
-                    AppLocalizations.of(context)!.or_register_via,
-                   style: Fontspath.w400readexPro16(color: AppColors.darkbluecolor)
-                ),
-                LineAuth()
-              ],
-            ),
-            SizedBox(height: height * 0.02),
-            Row(
-              children: [
-                Expanded(
-                  child: Buttonauth(
-                    isclick: true,
-                  backgroundcolor: AppColors.linecolor,
-                  text: AppLocalizations.of(context)!.apple_account,
-                  fontcolor: AppColors.darkbluecolor,
-                  image: ImagePath.apple,
-                ),
-                ),
-
-                SizedBox(
-                  width: width*0.035,
-                ),
-                Expanded(
-                  child: Buttonauth(
-                    isclick: true,
-                  backgroundcolor: AppColors.linecolor,
-                  text: AppLocalizations.of(context)!.google,
-                  fontcolor: AppColors.darkbluecolor,
-                  image: ImagePath.google,),
-                )
-              ],
-            ),
-            SizedBox(height: height * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(AppLocalizations.of(context)!.you_dont_have_an_account,style:Fontspath.w600LamaSans16(color: AppColors.blackcolor),),
-                SizedBox(width: width * 0.02),
-                InkWell(
-                  onTap: (){
-                    Get.toNamed('/login');// Removes previous page from stack
-                  },
-                  child:Text(AppLocalizations.of(context)!.register_here,style:Fontspath.w600LamaSans14underline(
-                      color: AppColors.orangecolor,
-                  ),)
-                  ,
-                )
-              ],
-            ),
+            /// ===== Left panel only for Desktop =====
+            if (isDesktop)
+              backgroundDesktop()
+            /// ===== Main Content =====
           ],
         ),
       ),

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sun_system/utiles/assets/AppColors.dart';
+import 'package:sun_system/utiles/assets/FontSelectionData.dart';
 import 'package:sun_system/utiles/assets/Fontspath.dart';
 import 'package:sun_system/utiles/assets/ImagePath.dart';
-import 'package:sun_system/view/Auth/AuthWidget/ButtonAuth.dart';
-import 'package:sun_system/view/Auth/AuthWidget/TextFeildAuth.dart';
-import 'package:get/get.dart';
-import 'package:sun_system/l10n/app_localizations.dart';
+import 'package:sun_system/utiles/assets/ValuesOfAllApp.dart';
+import 'package:sun_system/view/Auth/Signup/Signup.dart';
+import 'package:sun_system/view/customWidget/AppButton.dart';
+import 'package:sun_system/view/customWidget/AppText.dart';
+import 'package:sun_system/view/customWidget/NavigateToPageWidget.dart';
+import 'package:sun_system/view/customWidget/TextFeildAuth.dart';
+import 'package:sun_system/view/Auth/AuthWidget/backgroundDesktop.dart';
 
 class Login extends StatefulWidget {
   static const String RouteName = 'Login';
@@ -17,119 +21,186 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    Size size = MediaQuery.of(context).size;
+
+    /// Define breakpoints
+    bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
+    bool isTablet =
+        size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
+    bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
+
     return Scaffold(
-        backgroundColor: AppColors.backgroundcolor,
-      body: SingleChildScrollView(
-        child: Padding(
-        padding: EdgeInsetsGeometry.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: AppColors.backgroundcolor,
+      body: SafeArea(
+        child: Row(
           children: [
-            SizedBox(height: height * 0.03),
-            Image.asset(
-              ImagePath.logo,
-              height: height * 0.09,
-            ),
-            SizedBox(height: height * 0.05),
-            Text(
-              AppLocalizations.of(context)!.login,
-              //textAlign: TextAlign.center,
-              style: Fontspath.w500readexPro22(
-                color: AppColors.lightblackcolor,
-              ),
+            /// Main login form
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(20),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: isMobile ? 500 : isTablet ? 700 : 900,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        /// Logo
+                        Image.asset(ImagePath.logo, height: 80),
+                        const SizedBox(height: 30),
 
-            ),
-            SizedBox(height: height * 0.02),
-            Text(
-              AppLocalizations.of(context)!.please_enter_your_phone,
-              //textAlign: TextAlign.center,
-              style: Fontspath.w400readexPro14(
-                color: AppColors.lightblackcolor,
-              ),
+                        /// Title
+                        AppText(
+                          text: 'login',
+                          style: Fontspath.w500readexPro22(
+                            fontWeightIndex: FontSelectionData.fontW500,
+                            color: AppColors.lightblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
 
-            ),
-            SizedBox(height: height * 0.03),
-            Text(
-              AppLocalizations.of(context)!.username,
-              //textAlign: TextAlign.center,
-              style: Fontspath.w400readexPro14(
-                color: AppColors.darkblackcolor,
-              ),
-            ),
-            SizedBox(height: height * 0.02),
-            Textfeildauth(),
-            SizedBox(height: height * 0.03),
-            Text(
-              AppLocalizations.of(context)!.password,
-              //textAlign: TextAlign.center,
-              style: Fontspath.w400readexPro14(
-                color: AppColors.darkblackcolor,
-              ),
-            ),
-            SizedBox(height: height * 0.02),
-            Textfeildauth(isPassword: true,),
-            SizedBox(height: height * 0.02),
-            Row(
-              children: [
-                SizedBox(width: width * 0.02),
-                Text(AppLocalizations.of(context)!.forget_password,
-                style: Fontspath.w600LamaSans16(color: AppColors.blackcolor),),
-                SizedBox(width: width * 0.04),
-                Text(AppLocalizations.of(context)!.redeem_here,
-                  style: Fontspath.w600LamaSans14underline(color: AppColors.orangecolor.withOpacity(0.8)),),
-              ],
+                        /// Subtitle
+                        AppText(
+                          text: 'please_enter_your_phone',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.lightblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 25),
 
-            ),
-            SizedBox(height: height * 0.02),
-            Buttonauth(
-                isclick: true,
-                backgroundcolor: AppColors.orangecolor.withOpacity(0.8),
-                text: AppLocalizations.of(context)!.login,
-                fontcolor: AppColors.whitecolor
-            ),
-            SizedBox(height: height * 0.01),
-            InkWell(
-              onTap: (){},
-              child: Text(AppLocalizations.of(context)!.login_as_a_guest_user,
-                style: Fontspath.w400readexPro12(color: AppColors.darkblackcolor)?.copyWith(
-                    decoration: TextDecoration.underline
-                )
-                ,),
-            ),
-            SizedBox(height: height * 0.03),
-            InkWell(
-              onTap: (){},
-              child: Image.asset(
-                ImagePath.faceid,
-                height: height*0.08,
+                        /// Username field
+                        AppText(
+                          text: 'username',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.darkblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Material(
+                          child: AppTextFeild(controller: usernameController),
+                        ),
+                        const SizedBox(height: 25),
+
+                        /// Password field
+                        AppText(
+                          text: 'password',
+                          style: Fontspath.w400readexPro14(
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.darkblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Material(
+                          child: AppTextFeild(
+                            controller: passwordController,
+                            isPassword: true,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+
+                        /// Forgot password row
+                        Row(
+                          children: [
+                            AppText(
+                              text: 'forget_password',
+                              style: Fontspath.w600LamaSans16(
+                                fontWeightIndex: FontSelectionData.fontW600,
+                                color: AppColors.blackcolor,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            AppText(
+                              text: 'redeem_here',
+                              style: Fontspath.w600LamaSans14underline(
+                                fontWeightIndex: FontSelectionData.fontW600,
+                                color: AppColors.orangecolor.withOpacity(0.8),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 25),
+
+                        /// Login button
+                        AppButton(
+                          isclick: true,
+                          backgroundcolor: AppColors.orangecolor.withOpacity(0.8),
+                          text: 'login',
+                          fontcolor: AppColors.whitecolor,
+                          onTap: () {
+                            // Handle login
+                          },
+                        ),
+                        const SizedBox(height: 12),
+
+                        /// Guest login
+                        InkWell(
+                          onTap: () {},
+                          child: AppText(
+                            text: 'login_as_a_guest_user',
+                            style: Fontspath.w400readexPro12(
+                              fontWeightIndex: FontSelectionData.fontW400,
+                              color: AppColors.darkblackcolor,
+                            ).copyWith(decoration: TextDecoration.underline),
+                          ),
+                        ),
+                        const SizedBox(height: 25),
+
+                        /// Face ID
+                        InkWell(
+                          onTap: () {},
+                          child: Image.asset(ImagePath.faceid, height: 50),
+                        ),
+                        const SizedBox(height: 30),
+
+                        /// Register link
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AppText(
+                              text: 'dont_have_account',
+                              style: Fontspath.w600LamaSans16(
+                                fontWeightIndex: FontSelectionData.fontW600,
+                                color: AppColors.blackcolor,
+                              ),
+                            ),
+                            const SizedBox(width: 6),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                    NavigateToPageWidget(const Signup())
+                                );
+                              },
+                              child: AppText(
+                                text: 'register_here',
+                                style: Fontspath.w600LamaSans14underline(
+                                  fontWeightIndex: FontSelectionData.fontW600,
+                                  color: AppColors.orangecolor,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 30),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
-            SizedBox(height: height * 0.03),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(AppLocalizations.of(context)!.dont_have_account,
-                style: Fontspath.w600LamaSans16(color: AppColors.blackcolor),),
-                SizedBox(width: width * 0.02),
-               InkWell(
-                 onTap: (){
-                   Get.toNamed('/Signup');
-                 },
-                 child:  Text(AppLocalizations.of(context)!.register_here
-                   , style: Fontspath.w600LamaSans14underline(color: AppColors.orangecolor),),
-               )
-              ],
-            ),
+            /// Desktop Left Panel
+            if (isDesktop) backgroundDesktop(),
           ],
         ),
       ),
-      )
     );
   }
 }
