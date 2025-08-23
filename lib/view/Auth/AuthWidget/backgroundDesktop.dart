@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:sun_system/utiles/assets/AppColors.dart';
-import 'package:sun_system/utiles/assets/ImagePath.dart';
+import '../../../utiles/assets/AppColors.dart';
+import '../../../utiles/assets/ImagePath.dart';
 
 class backgroundDesktop extends StatelessWidget {
   const backgroundDesktop({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sun_system/utiles/assets/AppColors.dart';
+import '../../../utiles/assets/AppColors.dart';
 
 class OtpBox extends StatelessWidget {
   final TextEditingController controller;

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:sun_system/Controller/Cubit/language.dart';
+import '../../Controller/Cubit/language.dart';
 
 class AppText extends StatelessWidget {
   final String text;

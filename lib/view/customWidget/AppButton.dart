@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sun_system/utiles/assets/AppColors.dart';
-import 'package:sun_system/utiles/assets/Fontspath.dart';
-import 'package:sun_system/view/customWidget/AppText.dart';
+import '../../view/customWidget/AppText.dart';
 
 class AppButton extends StatelessWidget {
   final String text;

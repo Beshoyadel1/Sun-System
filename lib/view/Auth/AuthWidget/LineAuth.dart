@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sun_system/utiles/assets/AppColors.dart';
+import '../../../utiles/assets/AppColors.dart';
 
 class LineAuth extends StatelessWidget {
   const LineAuth({super.key});
@@ -7,7 +7,7 @@ class LineAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: AppColors.linecolor.withOpacity(0.6),
+      color: AppColors.linecolor.withValues(alpha: 0.6),
       thickness: 1,
       endIndent: 10,
     );

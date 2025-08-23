@@ -1,0 +1,188 @@
+// SignupView.dart
+import 'package:flutter/material.dart';
+import '../../../utiles/assets/AppColors.dart';
+import '../../../utiles/assets/FontSelectionData.dart';
+import '../../../utiles/assets/Fontspath.dart';
+import '../../../utiles/assets/ImagePath.dart';
+import '../../../utiles/assets/ValuesOfAllApp.dart';
+import '../../../utiles/assets/languagePath.dart';
+import '../../../view/Auth/AuthWidget/backgroundDesktop.dart';
+import '../../../view/customWidget/AppButton.dart';
+import '../../../view/customWidget/AppText.dart';
+import '../../../view/customWidget/NavigateToPageWidget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../Controller/Cubit/SignupCubit/SignupCubit.dart';
+import '../../../view/Auth/AuthWidget/AppLabeledTextField.dart';
+import '../../../view/Auth/OTP/OTP.dart';
+
+class SignupView extends StatelessWidget {
+  SignupView({super.key});
+
+  final _usernameController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _rePasswordController = TextEditingController();
+
+  void _validate(BuildContext context) {
+    context.read<SignupCubit>().validateForm(
+      username: _usernameController.text.trim(),
+      phone: _phoneController.text.trim(),
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+      rePassword: _rePasswordController.text.trim(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
+    bool isTablet =
+        size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
+    bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
+
+    return Scaffold(
+      backgroundColor: AppColors.backgroundcolor,
+      body: SafeArea(
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(20),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: isMobile ? 500 : isTablet ? 700 : 900,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const SizedBox(height: 30),
+                        Image.asset(ImagePath.logo, height: 80),
+                        const SizedBox(height: 40),
+
+                        AppText(
+                          text: LanguagePath.registerANewAccount,
+                          style: Fontspath.appTextStyle(
+                            fontSize: 22,
+                            fontWeightIndex: FontSelectionData.fontW500,
+                            color: AppColors.lightblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+
+                        AppText(
+                          text: LanguagePath.pleaseEnterYourAccountInformationAndPassword,
+                          style: Fontspath.appTextStyle(
+                            fontSize: 14,
+                            fontWeightIndex: FontSelectionData.fontW400,
+                            color: AppColors.lightblackcolor,
+                          ),
+                        ),
+                        const SizedBox(height: 30),
+                        AppLabeledTextField(
+                            label: LanguagePath.username,
+                            controller: _usernameController,
+                          onChanged: (_) => _validate(context),
+                        ),
+
+                        const SizedBox(height: 25),
+                        /// Phone
+                        AppLabeledTextField(
+                          label: LanguagePath.phoneNumber,
+                          controller: _phoneController,
+                          onChanged: (_) => _validate(context),
+                          isNumber: true,
+                        ),
+
+                        const SizedBox(height: 25),
+
+                        AppLabeledTextField(
+                          label: LanguagePath.email,
+                          controller: _emailController,
+                          onChanged: (_) => _validate(context),
+                        ),
+
+                        const SizedBox(height: 25),
+
+                        AppLabeledTextField(
+                          label: LanguagePath.password,
+                          controller: _passwordController,
+                          onChanged: (_) => _validate(context),
+                          isPassword: true,
+                        ),
+
+                        const SizedBox(height: 25),
+                        /// Re-Password
+                        AppLabeledTextField(
+                          label: LanguagePath.rePassword,
+                          controller: _rePasswordController,
+                          onChanged: (_) => _validate(context),
+                          isPassword: true,
+                        ),
+                        const SizedBox(height: 30),
+
+                        /// Create Account Button
+                        BlocBuilder<SignupCubit, bool>(
+                          builder: (context, isClick) {
+                            return AppButton(
+                              isclick: isClick,
+                              backgroundcolor: isClick
+                                  ? AppColors.orangecolor
+                                  : AppColors.graycolor,
+                              text: LanguagePath.createAccount,
+                              fontcolor: AppColors.whitecolor,
+                              onTap: () {
+                                if (isClick) {
+                                  Navigator.of(context).push(
+                                    NavigateToPageWidget(const Otp()),
+                                  );
+                                }
+                              },
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 30),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AppText(
+                              text: LanguagePath.createAnAccountInTheNameOfACompany,
+                              style: Fontspath.appTextStyle(
+                                fontSize: 16,
+                                color: AppColors.blackcolor,
+                                fontWeightIndex: FontSelectionData.fontW600,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            InkWell(
+                              onTap: () {},
+                              child: AppText(
+                                text: LanguagePath.registerHere,
+                                style: Fontspath.appTextStyle(
+                                  fontSize: 14,
+                                  underline: true,
+                                  color: AppColors.orangecolor,
+                                  fontWeightIndex: FontSelectionData.fontW600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            if (isDesktop) backgroundDesktop(),
+          ],
+        ),
+      ),
+    );
+  }
+}

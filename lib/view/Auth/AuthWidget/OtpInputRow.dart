@@ -1,6 +1,6 @@
 // otp_input_row.dart
 import 'package:flutter/material.dart';
-import 'package:sun_system/view/Auth/AuthWidget/OtpBox.dart';
+import '../../../view/Auth/AuthWidget/OtpBox.dart';
 
 class OtpInputRow extends StatelessWidget {
   final List<TextEditingController> controllers;

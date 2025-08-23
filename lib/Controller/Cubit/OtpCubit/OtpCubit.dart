@@ -1,7 +1,7 @@
 // otp_cubit.dart
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sun_system/Controller/Cubit/OtpCubit/OtpState.dart';
+import '../../../Controller/Cubit/OtpCubit/OtpState.dart';
 
 
 class OtpCubit extends Cubit<OtpState> {

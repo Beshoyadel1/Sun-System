@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import '../../../utiles/assets/AppColors.dart';
+import '../../../utiles/assets/FontSelectionData.dart';
+import '../../../utiles/assets/Fontspath.dart';
+import '../../../utiles/assets/ImagePath.dart';
+import '../../../utiles/assets/ValuesOfAllApp.dart';
+import '../../../utiles/assets/languagePath.dart';
+import '../../../view/customWidget/AppText.dart';
+import '../../../view/Auth/AuthWidget/backgroundDesktop.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sun_system/Controller/Cubit/OtpCubit/OtpCubit.dart';
-import 'package:sun_system/Controller/Cubit/OtpCubit/OtpState.dart';
-import 'package:sun_system/utiles/assets/AppColors.dart';
-import 'package:sun_system/utiles/assets/FontSelectionData.dart';
-import 'package:sun_system/utiles/assets/Fontspath.dart';
-import 'package:sun_system/utiles/assets/ImagePath.dart';
-import 'package:sun_system/utiles/assets/ValuesOfAllApp.dart';
-import 'package:sun_system/view/Auth/Login/Login.dart';
-import 'package:sun_system/view/customWidget/AppText.dart';
-import 'package:sun_system/view/Auth/AuthWidget/OtpInputRow.dart';
-import 'package:sun_system/view/Auth/AuthWidget/backgroundDesktop.dart';
-import 'package:sun_system/view/customWidget/NavigateToPageWidget.dart';
+import '../../../Controller/Cubit/OtpCubit/OtpCubit.dart';
+import '../../../Controller/Cubit/OtpCubit/OtpState.dart';
+import '../../../view/Auth/Login/Login.dart';
+import '../../../view/Auth/AuthWidget/OtpInputRow.dart';
+import '../../../view/customWidget/NavigateToPageWidget.dart';
 
 class Otp extends StatefulWidget {
   const Otp({super.key});
@@ -89,16 +90,18 @@ class _OtpState extends State<Otp> {
                         Image.asset(ImagePath.logo, height: 80),
                         const SizedBox(height: 40),
                         AppText(
-                          text: 'confirmPassword',
-                          style: Fontspath.w500readexPro22(
+                          text: LanguagePath.confirmPassword,
+                          style: Fontspath.appTextStyle(
+                            fontSize: 22,
                             fontWeightIndex: FontSelectionData.fontW500,
                             color: AppColors.lightblackcolor,
                           ),
                         ),
                         const SizedBox(height: 15),
                         AppText(
-                          text: 'pleaseenterthepasswordsenttoyourphonenumber',
-                          style: Fontspath.w400readexPro14(
+                          text: LanguagePath.pleaseEnterThePasswordSentToYourPhoneNumber,
+                          style: Fontspath.appTextStyle(
+                            fontSize: 14,
                             fontWeightIndex: FontSelectionData.fontW400,
                             color: AppColors.lightblackcolor,
                           ),
@@ -119,7 +122,8 @@ class _OtpState extends State<Otp> {
                                   text: state.canResend
                                       ? ""
                                       : "${state.secondsRemaining}s",
-                                  style: Fontspath.w400readexPro16(
+                                  style: Fontspath.appTextStyle(
+                                    fontSize: 16,
                                     fontWeightIndex: FontSelectionData.fontW400,
                                     color: AppColors.blackcolor,
                                   ),
@@ -129,8 +133,9 @@ class _OtpState extends State<Otp> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     AppText(
-                                      text: 'ididnotreceiveamessage',
-                                      style: Fontspath.w400readexPro16(
+                                      text: LanguagePath.iDidNotReceiveAMessage,
+                                      style: Fontspath.appTextStyle(
+                                        fontSize: 16,
                                         fontWeightIndex: FontSelectionData.fontW400,
                                         color: AppColors.blackcolor,
                                       ),
@@ -141,8 +146,9 @@ class _OtpState extends State<Otp> {
                                           ? () => context.read<OtpCubit>().startTimer()
                                           : null,
                                       child: AppText(
-                                        text: 'resend',
-                                        style: Fontspath.w400readexPro16(
+                                        text: LanguagePath.resend,
+                                        style: Fontspath.appTextStyle(
+                                          fontSize: 16,
                                           fontWeightIndex: FontSelectionData.fontW400,
                                           color: AppColors.orangecolor,
                                         ),

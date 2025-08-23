@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sun_system/utiles/assets/AppColors.dart';
-import 'package:sun_system/utiles/assets/FontSelectionData.dart';
-import 'package:sun_system/utiles/assets/Fontspath.dart';
-import 'package:sun_system/utiles/assets/ImagePath.dart';
-import 'package:sun_system/utiles/assets/ValuesOfAllApp.dart';
-import 'package:sun_system/view/Auth/Signup/Signup.dart';
-import 'package:sun_system/view/customWidget/AppButton.dart';
-import 'package:sun_system/view/customWidget/AppText.dart';
-import 'package:sun_system/view/customWidget/NavigateToPageWidget.dart';
-import 'package:sun_system/view/customWidget/TextFeildAuth.dart';
-import 'package:sun_system/view/Auth/AuthWidget/backgroundDesktop.dart';
+import '../../../utiles/assets/AppColors.dart';
+import '../../../utiles/assets/FontSelectionData.dart';
+import '../../../utiles/assets/Fontspath.dart';
+import '../../../utiles/assets/ImagePath.dart';
+import '../../../utiles/assets/ValuesOfAllApp.dart';
+import '../../../utiles/assets/languagePath.dart';
+import '../../../view/Auth/AuthWidget/AppLabeledTextField.dart';
+import '../../../view/Auth/Signup/SignupPage.dart';
+import '../../../view/customWidget/AppButton.dart';
+import '../../../view/customWidget/AppText.dart';
+import '../../../view/Auth/AuthWidget/backgroundDesktop.dart';
 
 class Login extends StatefulWidget {
   static const String RouteName = 'Login';
@@ -58,8 +58,9 @@ class _LoginState extends State<Login> {
 
                         /// Title
                         AppText(
-                          text: 'login',
-                          style: Fontspath.w500readexPro22(
+                          text: LanguagePath.login,
+                          style: Fontspath.appTextStyle(
+                            fontSize: 22,
                             fontWeightIndex: FontSelectionData.fontW500,
                             color: AppColors.lightblackcolor,
                           ),
@@ -68,59 +69,42 @@ class _LoginState extends State<Login> {
 
                         /// Subtitle
                         AppText(
-                          text: 'please_enter_your_phone',
-                          style: Fontspath.w400readexPro14(
+                          text: LanguagePath.pleaseEnterYourPhone,
+                          style: Fontspath.appTextStyle(
+                            fontSize: 14,
                             fontWeightIndex: FontSelectionData.fontW400,
                             color: AppColors.lightblackcolor,
                           ),
                         ),
                         const SizedBox(height: 25),
-
-                        /// Username field
-                        AppText(
-                          text: 'username',
-                          style: Fontspath.w400readexPro14(
-                            fontWeightIndex: FontSelectionData.fontW400,
-                            color: AppColors.darkblackcolor,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Material(
-                          child: AppTextFeild(controller: usernameController),
+                        AppLabeledTextField(
+                            label: LanguagePath.username,
+                            controller: usernameController,
                         ),
                         const SizedBox(height: 25),
-
-                        /// Password field
-                        AppText(
-                          text: 'password',
-                          style: Fontspath.w400readexPro14(
-                            fontWeightIndex: FontSelectionData.fontW400,
-                            color: AppColors.darkblackcolor,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Material(
-                          child: AppTextFeild(
-                            controller: passwordController,
-                            isPassword: true,
-                          ),
+                        AppLabeledTextField(
+                          label: LanguagePath.password,
+                          controller: passwordController,
+                          isPassword: true,
                         ),
                         const SizedBox(height: 20),
-
                         /// Forgot password row
                         Row(
                           children: [
                             AppText(
-                              text: 'forget_password',
-                              style: Fontspath.w600LamaSans16(
+                              text: LanguagePath.forgetPassword,
+                              style: Fontspath.appTextStyle(
+                                fontSize: 16,
                                 fontWeightIndex: FontSelectionData.fontW600,
                                 color: AppColors.blackcolor,
                               ),
                             ),
                             const SizedBox(width: 12),
                             AppText(
-                              text: 'redeem_here',
-                              style: Fontspath.w600LamaSans14underline(
+                              text: LanguagePath.redeemHere,
+                              style: Fontspath.appTextStyle(
+                                fontSize: 14,
+                                underline: true,
                                 fontWeightIndex: FontSelectionData.fontW600,
                                 color: AppColors.orangecolor.withOpacity(0.8),
                               ),
@@ -128,12 +112,11 @@ class _LoginState extends State<Login> {
                           ],
                         ),
                         const SizedBox(height: 25),
-
                         /// Login button
                         AppButton(
                           isclick: true,
                           backgroundcolor: AppColors.orangecolor.withOpacity(0.8),
-                          text: 'login',
+                          text: LanguagePath.login,
                           fontcolor: AppColors.whitecolor,
                           onTap: () {
                             // Handle login
@@ -145,8 +128,9 @@ class _LoginState extends State<Login> {
                         InkWell(
                           onTap: () {},
                           child: AppText(
-                            text: 'login_as_a_guest_user',
-                            style: Fontspath.w400readexPro12(
+                            text: LanguagePath.loginAsAGuestUser,
+                            style: Fontspath.appTextStyle(
+                              fontSize: 12,
                               fontWeightIndex: FontSelectionData.fontW400,
                               color: AppColors.darkblackcolor,
                             ).copyWith(decoration: TextDecoration.underline),
@@ -166,8 +150,9 @@ class _LoginState extends State<Login> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             AppText(
-                              text: 'dont_have_account',
-                              style: Fontspath.w600LamaSans16(
+                              text: LanguagePath.dontHaveAccount,
+                              style: Fontspath.appTextStyle(
+                                fontSize: 16,
                                 fontWeightIndex: FontSelectionData.fontW600,
                                 color: AppColors.blackcolor,
                               ),
@@ -176,12 +161,14 @@ class _LoginState extends State<Login> {
                             InkWell(
                               onTap: () {
                                 Navigator.of(context).push(
-                                    NavigateToPageWidget(const Signup())
+                                  MaterialPageRoute(builder: (context) => const SignupPage()),
                                 );
                               },
                               child: AppText(
-                                text: 'register_here',
-                                style: Fontspath.w600LamaSans14underline(
+                                text: LanguagePath.registerHere,
+                                style: Fontspath.appTextStyle(
+                                  fontSize: 14,
+                                  underline: true,
                                   fontWeightIndex: FontSelectionData.fontW600,
                                   color: AppColors.orangecolor,
                                 ),
