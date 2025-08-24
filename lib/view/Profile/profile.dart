@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sun_system/utiles/assets/FontSelectionData.dart';
-import 'package:sun_system/utiles/assets/Fontspath.dart';
-import 'package:sun_system/utiles/assets/languagePath.dart';
-import 'package:sun_system/view/Profile/widget/chooseModelCarText.dart';
-import 'package:sun_system/view/customWidget/AppText.dart';
+import '../../../utiles/assets/languagePath.dart';
+import '../../../view/Profile/widget/chooseModelCarText.dart';
 import '../../../view/customWidget/AppTextFeild.dart';
 import '../../../view/Profile/widget/AppBarProfile.dart';
 import '../../../view/Profile/widget/RowCircleText.dart';
@@ -11,7 +8,6 @@ import '../../../view/Profile/widget/RowNameExampleCar.dart';
 import '../../../view/customWidget/backgroundDesktop.dart';
 import '../../../utiles/assets/AppColors.dart';
 import '../../../utiles/assets/ValuesOfAllApp.dart';
-import '../../Controller/Cubit/language.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -56,7 +52,7 @@ class _ProfileState extends State<Profile> {
                         const SizedBox(height: 10,),
                         FractionallySizedBox(
                           alignment: AlignmentGeometry.topRight,
-                          widthFactor: 0.5, // takes 50% of available width
+                          widthFactor: 0.5,
                           child: AppTextFeild(
                             isIcon: true,
                             icon: Icon(Icons.search,
