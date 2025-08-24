@@ -7,7 +7,7 @@ class LineAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: AppColors.linecolor.withValues(alpha: 0.6),
+      color: AppColors.lineColor.withValues(alpha: 0.6),
       thickness: 1,
       endIndent: 10,
     );

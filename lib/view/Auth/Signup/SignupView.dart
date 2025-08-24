@@ -1,14 +1,13 @@
 // SignupView.dart
 import 'package:flutter/material.dart';
+import '../../../view/Auth/Signup/widget/FirstTitleSignup.dart';
+import '../../../view/Auth/Signup/widget/LastRowSignup.dart';
 import '../../../utiles/assets/AppColors.dart';
-import '../../../utiles/assets/FontSelectionData.dart';
-import '../../../utiles/assets/Fontspath.dart';
 import '../../../utiles/assets/ImagePath.dart';
 import '../../../utiles/assets/ValuesOfAllApp.dart';
 import '../../../utiles/assets/languagePath.dart';
-import '../../../view/Auth/AuthWidget/backgroundDesktop.dart';
+import '../../customWidget/backgroundDesktop.dart';
 import '../../../view/customWidget/AppButton.dart';
-import '../../../view/customWidget/AppText.dart';
 import '../../../view/customWidget/NavigateToPageWidget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../Controller/Cubit/SignupCubit/SignupCubit.dart';
@@ -44,7 +43,7 @@ class SignupView extends StatelessWidget {
     bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundcolor,
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Row(
           children: [
@@ -63,60 +62,34 @@ class SignupView extends StatelessWidget {
                         const SizedBox(height: 30),
                         Image.asset(ImagePath.logo, height: 80),
                         const SizedBox(height: 40),
-
-                        AppText(
-                          text: LanguagePath.registerANewAccount,
-                          style: Fontspath.appTextStyle(
-                            fontSize: 22,
-                            fontWeightIndex: FontSelectionData.fontW500,
-                            color: AppColors.lightblackcolor,
-                          ),
-                        ),
-                        const SizedBox(height: 15),
-
-                        AppText(
-                          text: LanguagePath.pleaseEnterYourAccountInformationAndPassword,
-                          style: Fontspath.appTextStyle(
-                            fontSize: 14,
-                            fontWeightIndex: FontSelectionData.fontW400,
-                            color: AppColors.lightblackcolor,
-                          ),
-                        ),
+                        FirstTitleSignup(),
                         const SizedBox(height: 30),
                         AppLabeledTextField(
                             label: LanguagePath.username,
                             controller: _usernameController,
                           onChanged: (_) => _validate(context),
                         ),
-
                         const SizedBox(height: 25),
-                        /// Phone
                         AppLabeledTextField(
                           label: LanguagePath.phoneNumber,
                           controller: _phoneController,
                           onChanged: (_) => _validate(context),
                           isNumber: true,
                         ),
-
                         const SizedBox(height: 25),
-
                         AppLabeledTextField(
                           label: LanguagePath.email,
                           controller: _emailController,
                           onChanged: (_) => _validate(context),
                         ),
-
                         const SizedBox(height: 25),
-
                         AppLabeledTextField(
                           label: LanguagePath.password,
                           controller: _passwordController,
                           onChanged: (_) => _validate(context),
                           isPassword: true,
                         ),
-
                         const SizedBox(height: 25),
-                        /// Re-Password
                         AppLabeledTextField(
                           label: LanguagePath.rePassword,
                           controller: _rePasswordController,
@@ -124,17 +97,15 @@ class SignupView extends StatelessWidget {
                           isPassword: true,
                         ),
                         const SizedBox(height: 30),
-
-                        /// Create Account Button
                         BlocBuilder<SignupCubit, bool>(
                           builder: (context, isClick) {
                             return AppButton(
                               isclick: isClick,
                               backgroundcolor: isClick
-                                  ? AppColors.orangecolor
-                                  : AppColors.graycolor,
+                                  ? AppColors.orangeColor
+                                  : AppColors.grayColor,
                               text: LanguagePath.createAccount,
-                              fontcolor: AppColors.whitecolor,
+                              fontcolor: AppColors.whiteColor,
                               onTap: () {
                                 if (isClick) {
                                   Navigator.of(context).push(
@@ -146,32 +117,7 @@ class SignupView extends StatelessWidget {
                           },
                         ),
                         const SizedBox(height: 30),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AppText(
-                              text: LanguagePath.createAnAccountInTheNameOfACompany,
-                              style: Fontspath.appTextStyle(
-                                fontSize: 16,
-                                color: AppColors.blackcolor,
-                                fontWeightIndex: FontSelectionData.fontW600,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            InkWell(
-                              onTap: () {},
-                              child: AppText(
-                                text: LanguagePath.registerHere,
-                                style: Fontspath.appTextStyle(
-                                  fontSize: 14,
-                                  underline: true,
-                                  color: AppColors.orangecolor,
-                                  fontWeightIndex: FontSelectionData.fontW600,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        LastRowSignup(),
                       ],
                     ),
                   ),
@@ -179,7 +125,7 @@ class SignupView extends StatelessWidget {
               ),
             ),
 
-            if (isDesktop) backgroundDesktop(),
+            if (isDesktop) const backgroundDesktop(),
           ],
         ),
       ),

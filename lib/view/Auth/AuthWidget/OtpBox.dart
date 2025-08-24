@@ -31,15 +31,15 @@ class OtpBox extends StatelessWidget {
           contentPadding: const EdgeInsets.all(0),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: AppColors.orangecolor),
+            borderSide: BorderSide(color: AppColors.orangeColor),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: AppColors.lightblackcolor),
+            borderSide: BorderSide(color: AppColors.lightBlackColor),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: AppColors.orangecolor, width: 2),
+            borderSide: BorderSide(color: AppColors.orangeColor, width: 2),
           ),
         ),
         onChanged: (value) {

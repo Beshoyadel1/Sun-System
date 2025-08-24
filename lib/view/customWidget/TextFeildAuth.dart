@@ -38,7 +38,7 @@ class _AppLabeledTextFieldState extends State<AppTextFeild> {
             child: Text(
               widget.labelText!,
               style: TextStyle(
-                color: AppColors.darkblackcolor,
+                color: AppColors.darkBlackColor,
                 fontWeight: FontWeight.w500,
                 fontSize: 14,
               ),
@@ -57,21 +57,21 @@ class _AppLabeledTextFieldState extends State<AppTextFeild> {
           decoration: InputDecoration(
             hintText: widget.hintText,
             hintStyle: TextStyle(
-              color: AppColors.graycolor.withOpacity(0.6),
+              color: AppColors.grayColor.withOpacity(0.6),
             ),
             contentPadding:
             const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide(
-                color: AppColors.graycolor.withOpacity(0.5),
+                color: AppColors.grayColor.withOpacity(0.5),
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: BorderSide(
-                color: AppColors.orangecolor.withOpacity(0.7),
+                color: AppColors.orangeColor.withOpacity(0.7),
                 width: 1,
               ),
             ),

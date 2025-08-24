@@ -36,7 +36,7 @@ class AppLabeledTextField extends StatelessWidget {
           style: Fontspath.appTextStyle(
             fontSize: 14,
             fontWeightIndex: FontSelectionData.fontW400,
-            color: AppColors.darkblackcolor,
+            color: AppColors.darkBlackColor,
           ),
         ),
         SizedBox(height: spacing),

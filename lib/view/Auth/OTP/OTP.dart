@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../view/Auth/OTP/widget/FirstTitleOTP.dart';
 import '../../../utiles/assets/AppColors.dart';
 import '../../../utiles/assets/FontSelectionData.dart';
 import '../../../utiles/assets/Fontspath.dart';
@@ -6,7 +7,7 @@ import '../../../utiles/assets/ImagePath.dart';
 import '../../../utiles/assets/ValuesOfAllApp.dart';
 import '../../../utiles/assets/languagePath.dart';
 import '../../../view/customWidget/AppText.dart';
-import '../../../view/Auth/AuthWidget/backgroundDesktop.dart';
+import '../../customWidget/backgroundDesktop.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../Controller/Cubit/OtpCubit/OtpCubit.dart';
 import '../../../Controller/Cubit/OtpCubit/OtpState.dart';
@@ -31,7 +32,6 @@ class _OtpState extends State<Otp> {
   @override
   void initState() {
     super.initState();
-    // شغّل التايمر مرة واحدة لما الصفحة تتفتح
     context.read<OtpCubit>().startTimer();
     _listenOtpFields();
   }
@@ -51,7 +51,6 @@ class _OtpState extends State<Otp> {
 
   @override
   void dispose() {
-    // ❌ متستدعيش context.read<OtpCubit>() هنا
     for (var c in _controllers) {
       c.dispose();
     }
@@ -70,7 +69,7 @@ class _OtpState extends State<Otp> {
     bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundcolor,
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Row(
           children: [
@@ -89,31 +88,13 @@ class _OtpState extends State<Otp> {
                         const SizedBox(height: 30),
                         Image.asset(ImagePath.logo, height: 80),
                         const SizedBox(height: 40),
-                        AppText(
-                          text: LanguagePath.confirmPassword,
-                          style: Fontspath.appTextStyle(
-                            fontSize: 22,
-                            fontWeightIndex: FontSelectionData.fontW500,
-                            color: AppColors.lightblackcolor,
-                          ),
-                        ),
-                        const SizedBox(height: 15),
-                        AppText(
-                          text: LanguagePath.pleaseEnterThePasswordSentToYourPhoneNumber,
-                          style: Fontspath.appTextStyle(
-                            fontSize: 14,
-                            fontWeightIndex: FontSelectionData.fontW400,
-                            color: AppColors.lightblackcolor,
-                          ),
-                        ),
+                        FirstTitleOTP(),
                         const SizedBox(height: 40),
-
                         OtpInputRow(
                           controllers: _controllers,
                           focusNodes: _focusNodes,
                         ),
                         const SizedBox(height: 40),
-
                         BlocBuilder<OtpCubit, OtpState>(
                           builder: (context, state) {
                             return Column(
@@ -125,7 +106,7 @@ class _OtpState extends State<Otp> {
                                   style: Fontspath.appTextStyle(
                                     fontSize: 16,
                                     fontWeightIndex: FontSelectionData.fontW400,
-                                    color: AppColors.blackcolor,
+                                    color: AppColors.blackColor,
                                   ),
                                 ),
                                 const SizedBox(height: 40),
@@ -137,7 +118,7 @@ class _OtpState extends State<Otp> {
                                       style: Fontspath.appTextStyle(
                                         fontSize: 16,
                                         fontWeightIndex: FontSelectionData.fontW400,
-                                        color: AppColors.blackcolor,
+                                        color: AppColors.blackColor,
                                       ),
                                     ),
                                     const SizedBox(width: 8),
@@ -150,7 +131,7 @@ class _OtpState extends State<Otp> {
                                         style: Fontspath.appTextStyle(
                                           fontSize: 16,
                                           fontWeightIndex: FontSelectionData.fontW400,
-                                          color: AppColors.orangecolor,
+                                          color: AppColors.orangeColor,
                                         ),
                                       ),
                                     ),
@@ -166,7 +147,7 @@ class _OtpState extends State<Otp> {
                 ),
               ),
             ),
-            if (isDesktop) backgroundDesktop(),
+            if (isDesktop) const backgroundDesktop(),
           ],
         ),
       ),

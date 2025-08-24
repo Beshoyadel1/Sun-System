@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
+   // print(MediaQuery.of(context).size.width);
     return BlocBuilder<LanguageBloc, LanguageState>(
       builder: (context, state) {
         return MaterialApp(
@@ -39,12 +39,6 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          builder: (context, child) {
-            return Directionality(
-              textDirection: TextDirection.rtl, // English is LTR
-              child: child!,
-            );
-          },
           home: const FirstPageAuth(),
         );
       },

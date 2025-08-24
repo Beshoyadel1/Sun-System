@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import '../../../view/Auth/Login/widget/FaceIdLogin.dart';
+import '../../../view/Auth/Login/widget/FirstTitleLogin.dart';
+import '../../../view/Auth/Login/widget/LastRowTitleLogin.dart';
+import '../../../view/Auth/Login/widget/LoginGuest.dart';
+import '../../../view/Auth/Login/widget/RowForgetPassword.dart';
 import '../../../utiles/assets/AppColors.dart';
-import '../../../utiles/assets/FontSelectionData.dart';
-import '../../../utiles/assets/Fontspath.dart';
 import '../../../utiles/assets/ImagePath.dart';
 import '../../../utiles/assets/ValuesOfAllApp.dart';
 import '../../../utiles/assets/languagePath.dart';
 import '../../../view/Auth/AuthWidget/AppLabeledTextField.dart';
-import '../../../view/Auth/Signup/SignupPage.dart';
 import '../../../view/customWidget/AppButton.dart';
-import '../../../view/customWidget/AppText.dart';
-import '../../../view/Auth/AuthWidget/backgroundDesktop.dart';
+import '../../customWidget/backgroundDesktop.dart';
 
 class Login extends StatefulWidget {
   static const String RouteName = 'Login';
@@ -27,7 +28,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     /// Define breakpoints
     bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
     bool isTablet =
@@ -35,11 +35,10 @@ class _LoginState extends State<Login> {
     bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundcolor,
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Row(
           children: [
-            /// Main login form
             Expanded(
               flex: 1,
               child: Center(
@@ -52,30 +51,9 @@ class _LoginState extends State<Login> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        /// Logo
                         Image.asset(ImagePath.logo, height: 80),
                         const SizedBox(height: 30),
-
-                        /// Title
-                        AppText(
-                          text: LanguagePath.login,
-                          style: Fontspath.appTextStyle(
-                            fontSize: 22,
-                            fontWeightIndex: FontSelectionData.fontW500,
-                            color: AppColors.lightblackcolor,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-
-                        /// Subtitle
-                        AppText(
-                          text: LanguagePath.pleaseEnterYourPhone,
-                          style: Fontspath.appTextStyle(
-                            fontSize: 14,
-                            fontWeightIndex: FontSelectionData.fontW400,
-                            color: AppColors.lightblackcolor,
-                          ),
-                        ),
+                        FirstTitleLogin(),
                         const SizedBox(height: 25),
                         AppLabeledTextField(
                             label: LanguagePath.username,
@@ -88,94 +66,22 @@ class _LoginState extends State<Login> {
                           isPassword: true,
                         ),
                         const SizedBox(height: 20),
-                        /// Forgot password row
-                        Row(
-                          children: [
-                            AppText(
-                              text: LanguagePath.forgetPassword,
-                              style: Fontspath.appTextStyle(
-                                fontSize: 16,
-                                fontWeightIndex: FontSelectionData.fontW600,
-                                color: AppColors.blackcolor,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            AppText(
-                              text: LanguagePath.redeemHere,
-                              style: Fontspath.appTextStyle(
-                                fontSize: 14,
-                                underline: true,
-                                fontWeightIndex: FontSelectionData.fontW600,
-                                color: AppColors.orangecolor.withOpacity(0.8),
-                              ),
-                            ),
-                          ],
-                        ),
+                        RowForgetPassword(),
                         const SizedBox(height: 25),
-                        /// Login button
                         AppButton(
                           isclick: true,
-                          backgroundcolor: AppColors.orangecolor.withOpacity(0.8),
+                          backgroundcolor: AppColors.orangeColor.withOpacity(0.8),
                           text: LanguagePath.login,
-                          fontcolor: AppColors.whitecolor,
+                          fontcolor: AppColors.whiteColor,
                           onTap: () {
-                            // Handle login
                           },
                         ),
                         const SizedBox(height: 12),
-
-                        /// Guest login
-                        InkWell(
-                          onTap: () {},
-                          child: AppText(
-                            text: LanguagePath.loginAsAGuestUser,
-                            style: Fontspath.appTextStyle(
-                              fontSize: 12,
-                              fontWeightIndex: FontSelectionData.fontW400,
-                              color: AppColors.darkblackcolor,
-                            ).copyWith(decoration: TextDecoration.underline),
-                          ),
-                        ),
+                        LoginGuest(),
                         const SizedBox(height: 25),
-
-                        /// Face ID
-                        InkWell(
-                          onTap: () {},
-                          child: Image.asset(ImagePath.faceid, height: 50),
-                        ),
+                        FaceIdLogin(),
                         const SizedBox(height: 30),
-
-                        /// Register link
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AppText(
-                              text: LanguagePath.dontHaveAccount,
-                              style: Fontspath.appTextStyle(
-                                fontSize: 16,
-                                fontWeightIndex: FontSelectionData.fontW600,
-                                color: AppColors.blackcolor,
-                              ),
-                            ),
-                            const SizedBox(width: 6),
-                            InkWell(
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) => const SignupPage()),
-                                );
-                              },
-                              child: AppText(
-                                text: LanguagePath.registerHere,
-                                style: Fontspath.appTextStyle(
-                                  fontSize: 14,
-                                  underline: true,
-                                  fontWeightIndex: FontSelectionData.fontW600,
-                                  color: AppColors.orangecolor,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        LastRowTitleLogin(),
                         const SizedBox(height: 30),
                       ],
                     ),
@@ -183,8 +89,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            /// Desktop Left Panel
-            if (isDesktop) backgroundDesktop(),
+            if (isDesktop) const backgroundDesktop(),
           ],
         ),
       ),
