@@ -12,6 +12,12 @@ class AppLocalizations {
 
   static final Map<String, Map<String, String>> _localizedValues = {
     'ar': {
+      'youCanSearchToSelectYourCarCategory':'يمكنك البحث لاختيار فئة سيارتك',
+      'chooseYourCarModel':'أختر موديل سيارتك',
+      'youCarName':'اسم سيارتك',
+      'exampleCar':'(مثال سيارتي الهوندا - سيارة زوجتي )',
+      'yourVehicleInformation':'بيانات سيارتك',
+      'toViewServicesAndCentersForYourVehicleModel':'لاستعراض خدمات ومراكز لموديل سيارتك',
       'language': 'اللغة',
       'arabic': 'العربية',
       'english': 'الانجليزية',
@@ -55,6 +61,12 @@ class AppLocalizations {
       'resend': 'إعادة ارسال',
     },
     'en': {
+      'youCanSearchToSelectYourCarCategory':'You can search to select your car category.',
+      'chooseYourCarModel':'Choose your car model',
+      'youCarName':'Your car name',
+      'exampleCar':'(Example: My Honda - My wife car)',
+      'yourVehicleInformation':'Your vehicle information',
+      'toViewServicesAndCentersForYourVehicleModel':'To view services and centers for your vehicle model',
       'language': 'Language',
       'arabic': 'Arabic',
       'english': 'English',

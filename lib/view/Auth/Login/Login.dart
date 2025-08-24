@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../view/Profile/profile.dart';
+import '../../../view/customWidget/NavigateToPageWidget.dart';
 import '../../../view/Auth/Login/widget/FaceIdLogin.dart';
 import '../../../view/Auth/Login/widget/FirstTitleLogin.dart';
 import '../../../view/Auth/Login/widget/LastRowTitleLogin.dart';
@@ -28,7 +30,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    /// Define breakpoints
     bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
     bool isTablet =
         size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
@@ -74,6 +75,9 @@ class _LoginState extends State<Login> {
                           text: LanguagePath.login,
                           fontcolor: AppColors.whiteColor,
                           onTap: () {
+                            Navigator.of(context).push(
+                              NavigateToPageWidget(Profile()),
+                            );
                           },
                         ),
                         const SizedBox(height: 12),

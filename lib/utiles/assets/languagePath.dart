@@ -38,4 +38,11 @@ class LanguagePath {
   static const String pleaseEnterThePasswordSentToYourPhoneNumber = 'pleaseEnterThePasswordSentToYourPhoneNumber';
   static const String iDidNotReceiveAMessage = 'iDidNotReceiveAMessage';
   static const String resend = 'resend';
+  static const String yourVehicleInformation = 'yourVehicleInformation';
+  static const String toViewServicesAndCentersForYourVehicleModel = 'toViewServicesAndCentersForYourVehicleModel';
+  static const String youCarName = 'youCarName';
+  static const String exampleCar = 'exampleCar';
+  static const String chooseYourCarModel = 'chooseYourCarModel';
+  static const String youCanSearchToSelectYourCarCategory = 'youCanSearchToSelectYourCarCategory';
+
 }

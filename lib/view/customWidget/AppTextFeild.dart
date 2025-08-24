@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sun_system/Controller/Cubit/language.dart';
 import '../../utiles/assets/AppColors.dart';
 
 class AppTextFeild extends StatefulWidget {
@@ -10,6 +11,8 @@ class AppTextFeild extends StatefulWidget {
   final TextEditingController? controller;
   final Function(String)? onChanged;
   final String? Function(String?)? validator;
+  final bool isIcon;
+  final Icon? icon;
 
   const AppTextFeild({
     super.key,
@@ -20,6 +23,8 @@ class AppTextFeild extends StatefulWidget {
     this.controller,
     this.onChanged,
     this.validator,
+    this.icon,
+    this.isIcon = false,
   });
 
   @override
@@ -29,6 +34,7 @@ class AppTextFeild extends StatefulWidget {
 class _AppLabeledTextFieldState extends State<AppTextFeild> {
   @override
   Widget build(BuildContext context) {
+    final translated = AppLocalizations.maybeOf(context)?.translate(widget.hintText ?? "");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,10 +61,17 @@ class _AppLabeledTextFieldState extends State<AppTextFeild> {
           validator: widget.validator,
           onChanged: widget.onChanged,
           decoration: InputDecoration(
-            hintText: widget.hintText,
+            hintText: translated,
             hintStyle: TextStyle(
+              fontSize: 12,
               color: AppColors.grayColor.withOpacity(0.6),
             ),
+            prefixIcon: widget.isIcon
+                ? (widget.icon ?? Icon(
+              Icons.search,
+              color: AppColors.grayColor.withOpacity(0.6),
+            ))
+                : null,
             contentPadding:
             const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             enabledBorder: OutlineInputBorder(

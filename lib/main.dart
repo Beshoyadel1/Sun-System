@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../view/Auth/Login/Login.dart';
+import '../../view/Profile/profile.dart';
 import '../../Controller/Cubit/LanguageBloc/language_bloc.dart';
 import '../../Controller/Cubit/LanguageBloc/language_state.dart';
 import '../../Controller/Cubit/OtpCubit/OtpCubit.dart';
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<LanguageBloc, LanguageState>(
       builder: (context, state) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           locale: const Locale('ar'),
           supportedLocales: supportedLocales,
           localizationsDelegates: const [
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: const FirstPageAuth(),
+          home: FirstPageAuth(),
         );
       },
     );

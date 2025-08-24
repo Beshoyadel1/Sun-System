@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../view/customWidget/AppText.dart';
-import '../../../view/customWidget/TextFeildAuth.dart';
+import '../../../view/customWidget/AppTextFeild.dart';
 import '../../../utiles/assets/Fontspath.dart';
 import '../../../utiles/assets/AppColors.dart';
 import '../../../utiles/assets/FontSelectionData.dart';
