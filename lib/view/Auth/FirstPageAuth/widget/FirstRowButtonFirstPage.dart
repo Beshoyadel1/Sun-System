@@ -12,7 +12,6 @@ class FirstRowButtonFirstPage extends StatelessWidget {
       children: [
         Expanded(
           child: AppButton(
-            isclick: true,
             backgroundcolor:
             AppColors.orangeColor.withOpacity(0.6),
             text: LanguagePath.registerAsIndividuals,
@@ -22,7 +21,6 @@ class FirstRowButtonFirstPage extends StatelessWidget {
         const SizedBox(width: 12),
         Expanded(
           child: AppButton(
-            isclick: true,
             backgroundcolor:
             AppColors.darkBlueColor.withOpacity(0.6),
             text: LanguagePath.registerAsCompanies,

@@ -13,7 +13,6 @@ class SecondRowButtonFirstPage extends StatelessWidget {
       children: [
         Expanded(
           child: AppButton(
-            isclick: true,
             backgroundcolor: AppColors.lineColor,
             text: LanguagePath.appleAccount,
             fontcolor: AppColors.darkBlueColor,
@@ -23,7 +22,6 @@ class SecondRowButtonFirstPage extends StatelessWidget {
         const SizedBox(width: 15),
         Expanded(
           child: AppButton(
-            isclick: true,
             backgroundcolor: AppColors.lineColor,
             text: LanguagePath.google,
             fontcolor: AppColors.darkBlueColor,

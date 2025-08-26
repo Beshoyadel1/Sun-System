@@ -60,7 +60,10 @@ class _AppLabeledTextFieldState extends State<AppTextFeild> {
               : null,
           validator: widget.validator,
           onChanged: widget.onChanged,
+
           decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
             hintText: translated,
             hintStyle: TextStyle(
               fontSize: 12,

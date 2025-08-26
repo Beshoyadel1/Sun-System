@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sun_system/Controller/Cubit/CarBrandCubit/LogoCarCubit.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import '../../../../Controller/Cubit/CarBrandCubit/LogoCarCubit.dart';
+import '../../../../Controller/Cubit/ChooseFavouriteItemCubit/ChooseFavouriteItem.dart';
 import '../../Controller/Cubit/CarBrandCubit/ModelCarCubit.dart';
 import '../../Controller/Cubit/LanguageBloc/language_bloc.dart';
 import '../../Controller/Cubit/LanguageBloc/language_state.dart';
@@ -8,13 +10,13 @@ import '../../Controller/Cubit/OtpCubit/OtpCubit.dart';
 import '../../Controller/Cubit/SignupCubit/SignupCubit.dart';
 import '../../Controller/Cubit/language.dart';
 import '../../view/Auth/FirstPageAuth/FirstPageAuth.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => FavouriteCubit()),
         BlocProvider(create: (context) => ModelCarCubit()),
         BlocProvider(create: (context) => LogoCarCubit()),
         BlocProvider(create: (context) => LanguageBloc()),

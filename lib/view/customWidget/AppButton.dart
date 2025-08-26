@@ -7,7 +7,6 @@ class AppButton extends StatelessWidget {
   final Color backgroundcolor;
   final Color fontcolor;
   final String? image;
-  final bool isclick;
   final VoidCallback? onTap;
 
   const AppButton({
@@ -16,14 +15,13 @@ class AppButton extends StatelessWidget {
     required this.text,
     required this.fontcolor,
     this.image,
-    this.isclick = false,
     this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: isclick ? onTap : null,
+      onTap: onTap, // Will do nothing if onTap is null
       child: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -31,26 +29,27 @@ class AppButton extends StatelessWidget {
           color: backgroundcolor,
           borderRadius: BorderRadius.circular(30),
         ),
-        child: image ==null?AppText(
-          text:text,
+        child: image == null
+            ? AppText(
+          text: text,
           style: TextStyle(
             color: fontcolor,
             fontWeight: FontWeight.bold,
           ),
-        ):
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                AppText(
-                  text:text,
-                  style: TextStyle(
-                    color: fontcolor,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Image.asset(image!)
-              ],
-            )
+        )
+            : Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            AppText(
+              text: text,
+              style: TextStyle(
+                color: fontcolor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Image.asset(image!)
+          ],
+        ),
       ),
     );
   }

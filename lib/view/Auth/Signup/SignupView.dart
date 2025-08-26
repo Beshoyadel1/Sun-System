@@ -100,7 +100,6 @@ class SignupView extends StatelessWidget {
                         BlocBuilder<SignupCubit, bool>(
                           builder: (context, isClick) {
                             return AppButton(
-                              isclick: isClick,
                               backgroundcolor: isClick
                                   ? AppColors.orangeColor
                                   : AppColors.grayColor,

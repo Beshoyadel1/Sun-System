@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../utiles/assets/CarBrand.dart';
-import '../../../../view/Profile/widget/TabWidgetCar.dart';
 import '../../../../utiles/assets/AppColors.dart';
+import '../../../../utiles/assets/CarBrand.dart';
+import '../../../../view/Profile/ProfileWidget/TabWidgetCar.dart';
 import '../../../../Controller/Cubit/CarBrandCubit/ModelCarCubit.dart';
+
 
 class DefaultTabControllerModel extends StatelessWidget {
   const DefaultTabControllerModel({super.key});
@@ -36,6 +37,7 @@ class DefaultTabControllerModel extends StatelessWidget {
                       isScrollable: true,
                       indicatorColor: AppColors.transparent,
                       dividerColor: AppColors.transparent,
+                      tabAlignment: TabAlignment.start,
                       tabs: List.generate(modelsForBrand.length, (i) {
                         return TabWidgetCar(
                           imageSrc: modelsForBrand[i]["image"]!,

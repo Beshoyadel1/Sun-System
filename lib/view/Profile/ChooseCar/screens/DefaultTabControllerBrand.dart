@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../utiles/assets/CarBrand.dart';
-import '../../../../view/Profile/widget/TabWidgetCar.dart';
 import '../../../../utiles/assets/AppColors.dart';
 import '../../../../Controller/Cubit/CarBrandCubit/LogoCarCubit.dart';
+import '../../../../utiles/assets/CarBrand.dart';
+import '../../../../view/Profile/ProfileWidget/TabWidgetCar.dart';
 
 class DefaultTabControllerBrand extends StatefulWidget {
   const DefaultTabControllerBrand({super.key});
@@ -25,6 +25,7 @@ class _DefaultTabControllerBrandState extends State<DefaultTabControllerBrand> {
           isScrollable: true,
           indicatorColor: AppColors.transparent,
           dividerColor: AppColors.transparent,
+          tabAlignment: TabAlignment.start,
           tabs: List.generate(CarBrand.logoCarImage.length, (index) {
             return TabWidgetCar(
               imageSrc: CarBrand.logoCarImage[index],

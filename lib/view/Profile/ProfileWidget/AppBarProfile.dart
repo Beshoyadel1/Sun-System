@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import '../../../../utiles/assets/AppColors.dart';
 import '../../../../utiles/assets/FontSelectionData.dart';
 import '../../../../utiles/assets/Fontspath.dart';
-import '../../../../utiles/assets/languagePath.dart';
-import '../../../customWidget/AppText.dart';
-import '../../../../utiles/assets/ImagePath.dart';
+import '../../../../view/customWidget/AppText.dart';
 import '../../../../utiles/assets/ValuesOfAllApp.dart';
 
 class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarProfile({super.key});
+  String text,imagSrc;
+   AppBarProfile({super.key,required this.text,required this.imagSrc});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +33,11 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
         ],
       )
           : Container(color: AppColors.backgroundColor), // mobile/tablet
-      leading: Image.asset(ImagePath.notify),
+      leading: Image.asset(imagSrc),
       actions: [
         const SizedBox(width: 10,),
         AppText(
-          text: LanguagePath.profile,
+          text: text,
           style: Fontspath.appTextStyle(
             fontSize: 18,
             fontWeightIndex: FontSelectionData.fontW400,

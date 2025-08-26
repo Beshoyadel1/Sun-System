@@ -7,6 +7,8 @@ class ImagePath{
   static const String faceId='assets/images/faceid.png';
   static const String notify='assets/images/notify.png';
   static const String circle24='assets/images/circle24.png';
+  static const String circle34='assets/images/circle34.png';
+  static const String circle44='assets/images/circle44.png';
   static const String porsche='assets/images/porsche.png';
   static const String nissan='assets/images/nissan.png';
   static const String bmw='assets/images/bmw.png';
@@ -15,4 +17,8 @@ class ImagePath{
   static const String car2='assets/images/car2.png';
   static const String car3='assets/images/car3.png';
   static const String car4='assets/images/car4.png';
+  static const String map='assets/images/map.png';
+  static const String shield='assets/images/shield.png';
+  static const String person='assets/images/person.png';
+  static const String correct='assets/images/correct.png';
 }

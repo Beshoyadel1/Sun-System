@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../../../../utiles/assets/AppColors.dart';
 import '../../../../utiles/assets/FontSelectionData.dart';
 import '../../../../utiles/assets/Fontspath.dart';
 import '../../../../utiles/assets/languagePath.dart';
-import '../../../customWidget/AppText.dart';
+import '../../../../view/customWidget/AppText.dart';
+
+
 
 class RowNameExampleCar extends StatelessWidget {
   const RowNameExampleCar({super.key});

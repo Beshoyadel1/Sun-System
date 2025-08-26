@@ -3,19 +3,20 @@ import '../../../../utiles/assets/AppColors.dart';
 import '../../../../utiles/assets/FontSelectionData.dart';
 import '../../../../utiles/assets/Fontspath.dart';
 import '../../../../utiles/assets/languagePath.dart';
-import '../../../customWidget/AppText.dart';
+import '../../../../view/customWidget/AppText.dart';
 
-class chooseModelCarText extends StatelessWidget {
-  const chooseModelCarText({super.key});
+
+class TextchooseYourFavoriteServices extends StatelessWidget {
+  const TextchooseYourFavoriteServices({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppText(
-      text: LanguagePath.chooseYourCarModel,
+      text: LanguagePath.chooseYourFavoriteServices,
       style: Fontspath.appTextStyle(
-        fontSize: 16,
+        fontSize: 14,
         fontWeightIndex: FontSelectionData.fontW400,
-        color: AppColors.darkBlackColor,
+        color: AppColors.lightBlackColor,
       ),
     );
   }
