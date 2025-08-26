@@ -12,6 +12,8 @@ class AppLocalizations {
 
   static final Map<String, Map<String, String>> _localizedValues = {
     'ar': {
+      'skipToLater':'تخطي لاحقا',
+      'next':'التالي',
       'youCanSearchToSelectYourCarCategory':'يمكنك البحث لاختيار فئة سيارتك',
       'chooseYourCarModel':'أختر موديل سيارتك',
       'youCarName':'اسم سيارتك',
@@ -61,6 +63,8 @@ class AppLocalizations {
       'resend': 'إعادة ارسال',
     },
     'en': {
+      'skipToLater':'Skip to later',
+      'next':'Next',
       'youCanSearchToSelectYourCarCategory':'You can search to select your car category.',
       'chooseYourCarModel':'Choose your car model',
       'youCarName':'Your car name',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../view/Auth/Login/Login.dart';
-import '../../view/Profile/profile.dart';
+import 'package:sun_system/Controller/Cubit/CarBrandCubit/LogoCarCubit.dart';
+import '../../Controller/Cubit/CarBrandCubit/ModelCarCubit.dart';
 import '../../Controller/Cubit/LanguageBloc/language_bloc.dart';
 import '../../Controller/Cubit/LanguageBloc/language_state.dart';
 import '../../Controller/Cubit/OtpCubit/OtpCubit.dart';
@@ -15,6 +15,8 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => ModelCarCubit()),
+        BlocProvider(create: (context) => LogoCarCubit()),
         BlocProvider(create: (context) => LanguageBloc()),
          BlocProvider(create: (_) => OtpCubit()),
         BlocProvider(create: (_) => SignupCubit()),

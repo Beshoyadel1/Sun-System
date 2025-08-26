@@ -44,5 +44,6 @@ class LanguagePath {
   static const String exampleCar = 'exampleCar';
   static const String chooseYourCarModel = 'chooseYourCarModel';
   static const String youCanSearchToSelectYourCarCategory = 'youCanSearchToSelectYourCarCategory';
-
+  static const String skipToLater = 'skipToLater';
+  static const String next = 'next';
 }

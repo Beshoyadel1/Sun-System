@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import '../../../utiles/assets/AppColors.dart';
-import '../../../utiles/assets/FontSelectionData.dart';
-import '../../../utiles/assets/Fontspath.dart';
-import '../../../utiles/assets/languagePath.dart';
-import '../../../view/customWidget/AppText.dart';
-import '../../../utiles/assets/ImagePath.dart';
+import '../../../../utiles/assets/ImagePath.dart';
+import '../../../../utiles/assets/AppColors.dart';
+import '../../../../utiles/assets/FontSelectionData.dart';
+import '../../../../utiles/assets/Fontspath.dart';
+import '../../../../utiles/assets/languagePath.dart';
+import '../../../../view/customWidget/AppText.dart';
 
 class RowCircleText extends StatelessWidget {
   const RowCircleText({super.key});

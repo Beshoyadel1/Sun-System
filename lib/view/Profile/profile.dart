@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import '../../../view/Profile/widget/screens/RowNameExampleCar.dart';
+import '../../../utiles/assets/CarBrand.dart';
+import '../../../view/Profile/widget/screens/DefaultTabControllerBrand.dart';
+import '../../../view/Profile/widget/screens/DefaultTabControllerModel.dart';
+import '../../../view/Profile/widget/screens/LastButtonProfileScreen.dart';
+import '../../../view/Profile/widget/screens/RowCircleText.dart';
 import '../../../utiles/assets/languagePath.dart';
-import '../../../view/Profile/widget/chooseModelCarText.dart';
+import 'widget/screens/chooseModelCarText.dart';
 import '../../../view/customWidget/AppTextFeild.dart';
-import '../../../view/Profile/widget/AppBarProfile.dart';
-import '../../../view/Profile/widget/RowCircleText.dart';
-import '../../../view/Profile/widget/RowNameExampleCar.dart';
+import 'widget/screens/AppBarProfile.dart';
 import '../../../view/customWidget/backgroundDesktop.dart';
 import '../../../utiles/assets/AppColors.dart';
 import '../../../utiles/assets/ValuesOfAllApp.dart';
@@ -22,8 +26,10 @@ class _ProfileState extends State<Profile> {
     Size size = MediaQuery.of(context).size;
 
     bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
-    bool isTablet = size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
+    bool isTablet =
+        size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
     bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBarProfile(),
@@ -43,32 +49,43 @@ class _ProfileState extends State<Profile> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         RowCircleText(),
-                        const SizedBox(height: 40,),
+                        const SizedBox(height: 40),
                         RowNameExampleCar(),
-                        const SizedBox(height: 10,),
+                        const SizedBox(height: 10),
                         AppTextFeild(),
-                        const SizedBox(height: 45,),
+                        const SizedBox(height: 45),
                         chooseModelCarText(),
-                        const SizedBox(height: 10,),
+                        const SizedBox(height: 10),
                         FractionallySizedBox(
-                          alignment: AlignmentGeometry.topRight,
+                          alignment: Alignment.topRight,
                           widthFactor: 0.5,
                           child: AppTextFeild(
                             isIcon: true,
-                            icon: Icon(Icons.search,
+                            icon: Icon(
+                              Icons.search,
                               color: AppColors.grayColor.withOpacity(0.6),
                             ),
                             hintText: LanguagePath.youCanSearchToSelectYourCarCategory,
                           ),
                         ),
+                        const SizedBox(height: 10),
+                        DefaultTabController(
+                          length: CarBrand.logoCarImage.length,
+                          child: Column(
+                            children: [
+                              DefaultTabControllerBrand(),
+                              DefaultTabControllerModel(),
+                            ],
+                          ),
+                        ),
+                        LastButtonProfileScreen()
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-            if (isDesktop)
-              const backgroundDesktop()
+            if (isDesktop) const backgroundDesktop(),
           ],
         ),
       ),
