@@ -4,7 +4,7 @@ import '../../../../utiles/assets/languagePath.dart';
 import '../../../../utiles/assets/ImagePath.dart';
 import '../../../../view/customWidget/backgroundDesktop.dart';
 import '../../../../utiles/assets/ValuesOfAllApp.dart';
-import '../../../../view/Profile/Map/screens/MapTextFeild.dart';
+import '../../../../view/Profile/Map/screens/OrgLocationWidget.dart';
 import '../../../../view/Profile/Map/screens/RowCircleTextMap.dart';
 import '../../../../view/Profile/PreferredServices/PreferredServices.dart';
 import '../../../../view/Profile/ProfileWidget/AppBarProfile.dart';
@@ -56,7 +56,7 @@ class _MapScreenState extends State<MapScreen> {
                             children: [
                               RowCircleTextMap(),
                               const SizedBox(height: 20),
-                              MapTextFeild(),
+                              OrgLocationWidget(location: "30.0444,31.2357"),
                               const SizedBox(height: 20),
                             ],
                           ),

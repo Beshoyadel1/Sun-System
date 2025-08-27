@@ -45,8 +45,7 @@ dependencies:
   dio: ^5.8.0+1
   shared_preferences: ^2.5.1
   flutter_localization: ^0.3.3
-  google_maps_flutter: ^2.12.3
-  flutter_osm_plugin: ^1.4.2
+  flutter_map: ^8.2.1
 
 dev_dependencies:
   flutter_test:
