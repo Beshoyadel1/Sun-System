@@ -22,6 +22,7 @@ class RowGift extends StatelessWidget {
           ),
           maxLines: 1, // optional: keep single line
         ),
+        const SizedBox(width: 5,),
         AppText(
           text: LanguagePath.warrantyGift,
           style: Fontspath.appTextStyle(

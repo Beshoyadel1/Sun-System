@@ -21,56 +21,62 @@ class ListBenefit extends StatelessWidget {
             fontWeightIndex: FontSelectionData.fontW500,
             color: AppColors.blueColor32,
           ),
-          maxLines: 1, // optional: keep single line
+          maxLines: 1,
         ),
-        const SizedBox(height: 20,),
+        const SizedBox(height: 20),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(width: 10,),
-            Image.asset(ImagePath.correct),
-            const SizedBox(width: 10,),
-            AppText(
-              text: LanguagePath.benefitFromServiceWarranty,
-              style: Fontspath.appTextStyle(
-                fontSize: 16,
-                fontWeightIndex: FontSelectionData.fontW500,
-                color: AppColors.lightBlackColor,
+            Image.asset(ImagePath.correct, width: 20, height: 20),
+            const SizedBox(width: 8),
+            Expanded(
+              child: AppText(
+                text: LanguagePath.benefitFromServiceWarranty,
+                style: Fontspath.appTextStyle(
+                  fontSize: 14,
+                  fontWeightIndex: FontSelectionData.fontW500,
+                  color: AppColors.lightBlackColor,
+                ),
+                maxLines: null,
               ),
-              maxLines: 1, // optional: keep single line
             ),
           ],
         ),
-        const SizedBox(height: 20,),
+        const SizedBox(height: 20),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(width: 10,),
-            Image.asset(ImagePath.correct),
-            const SizedBox(width: 10,),
-            AppText(
-              text: LanguagePath.carsWarrantyMarket,
-              style: Fontspath.appTextStyle(
-                fontSize: 16,
-                fontWeightIndex: FontSelectionData.fontW500,
-                color: AppColors.lightBlackColor,
+            Image.asset(ImagePath.correct, width: 20, height: 20),
+            const SizedBox(width: 8),
+            Expanded(
+              child: AppText(
+                text: LanguagePath.carsWarrantyMarket,
+                style: Fontspath.appTextStyle(
+                  fontSize: 14,
+                  fontWeightIndex: FontSelectionData.fontW500,
+                  color: AppColors.lightBlackColor,
+                ),
+                maxLines: null,
               ),
-              maxLines: 1, // optional: keep single line
             ),
           ],
         ),
-        const SizedBox(height: 20,),
+        const SizedBox(height: 20),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(width: 10,),
-            Image.asset(ImagePath.correct),
-            const SizedBox(width: 10,),
-            AppText(
-              text: LanguagePath.freeMaintenanceDuringWarranty,
-              style: Fontspath.appTextStyle(
-                fontSize: 16,
-                fontWeightIndex: FontSelectionData.fontW500,
-                color: AppColors.lightBlackColor,
+            Image.asset(ImagePath.correct, width: 20, height: 20),
+            const SizedBox(width: 8),
+            Expanded(
+              child: AppText(
+                text: LanguagePath.freeMaintenanceDuringWarranty,
+                style: Fontspath.appTextStyle(
+                  fontSize: 14,
+                  fontWeightIndex: FontSelectionData.fontW500,
+                  color: AppColors.lightBlackColor,
+                ),
+                maxLines: null,
               ),
-              maxLines: 1, // optional: keep single line
             ),
           ],
         ),

@@ -83,7 +83,6 @@ class PreferredServices extends StatelessWidget {
                   ),
                 ),
               ),
-              if (isDesktop) const backgroundDesktop(),
             ],
           ),
         ),

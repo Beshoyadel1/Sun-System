@@ -23,8 +23,8 @@ class ChooseFavouriteItem extends StatelessWidget {
             context.read<FavouriteCubit>().toggleItem(textItem);
           },
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-            margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 3),
             decoration: BoxDecoration(
               color: isSelected ? AppColors.orangeColor : AppColors.whiteColor,
               borderRadius: BorderRadius.circular(30),

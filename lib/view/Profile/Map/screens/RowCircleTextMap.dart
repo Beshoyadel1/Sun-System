@@ -27,7 +27,7 @@ class RowCircleTextMap extends StatelessWidget {
                   fontWeightIndex: FontSelectionData.fontW500,
                   color: AppColors.lightBlackColor,
                 ),
-                maxLines: 1, // optional: keep single line
+                maxLines: 1,
               ),
               const SizedBox(height: 5),
               AppText(

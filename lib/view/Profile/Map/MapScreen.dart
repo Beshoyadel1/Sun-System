@@ -76,7 +76,6 @@ class _MapScreenState extends State<MapScreen> {
                 ),
               ),
             ),
-            if (isDesktop) const backgroundDesktop(),
           ],
         ),
       ),

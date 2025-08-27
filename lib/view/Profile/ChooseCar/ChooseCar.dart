@@ -108,7 +108,6 @@ class _ChooseCarState extends State<ChooseCar> {
                 ),
               ),
             ),
-            if (isDesktop) const backgroundDesktop(),
           ],
         ),
       ),

@@ -11,28 +11,10 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
-
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.transparent,
-      flexibleSpace: isDesktop
-          ? Row(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Container(color: AppColors.backgroundColor),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: AppColors.darkBlueColor.withOpacity(0.05),
-            ),
-          ),
-        ],
-      )
-          : Container(color: AppColors.backgroundColor), // mobile/tablet
+      flexibleSpace: Container(color: AppColors.backgroundColor),
       leading: Image.asset(imagSrc),
       actions: [
         const SizedBox(width: 10,),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import '../../../../view/Profile/ProfileWidget/RowChooseFavouriteItem.dart';
 import '../../../../utiles/assets/languagePath.dart';
 import '../../../../view/Profile/ProfileWidget/ChooseFavouriteItem.dart';
 
@@ -9,25 +10,19 @@ class ListchooseYourFavoriteServices extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            ChooseFavouriteItem(textItem: LanguagePath.serviceMaintenance),
-            ChooseFavouriteItem(textItem: LanguagePath.serviceOilChange),
-          ],
+        RowChooseFavouriteItem(
+            text1: LanguagePath.serviceMaintenance,
+            text2: LanguagePath.serviceOilChange
         ),
-        Row(
-          children: [
-            ChooseFavouriteItem(textItem: LanguagePath.serviceHighways),
-            ChooseFavouriteItem(textItem: LanguagePath.serviceElectricity),
-            ChooseFavouriteItem(textItem: LanguagePath.serviceSpareParts),
-          ],
+        RowChooseFavouriteItem(
+            text1: LanguagePath.serviceHighways,
+            text2: LanguagePath.serviceElectricity,
+          text3:LanguagePath.serviceSpareParts,
         ),
-        Row(
-          children: [
-            ChooseFavouriteItem(textItem: LanguagePath.serviceMobile),
-            ChooseFavouriteItem(textItem: LanguagePath.serviceCarMarket),
-            ChooseFavouriteItem(textItem: LanguagePath.serviceTransport),
-          ],
+        RowChooseFavouriteItem(
+          text1: LanguagePath.serviceMobile,
+          text2: LanguagePath.serviceCarMarket,
+          text3:LanguagePath.serviceTransport,
         ),
       ],
     );

@@ -50,7 +50,7 @@ class WarrantyGift extends StatelessWidget {
                             children: [
                               RowGift(),
                               const SizedBox(height: 40,),
-                              Image.asset(ImagePath.shield,width: 30,height: 150,),
+                              Image.asset(ImagePath.shield,width: 30,height: 100,),
                               const SizedBox(height: 20,),
                               RowSunWarranty(),
                               const SizedBox(height: 20,),
@@ -68,7 +68,6 @@ class WarrantyGift extends StatelessWidget {
                 ),
               ),
             ),
-            if (isDesktop) const backgroundDesktop(),
           ],
         ),
       ),
