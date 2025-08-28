@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:sun_system/view/Profile/ProfileWidget/RowListBenefit.dart';
+import '../../../../view/Profile/ProfileWidget/RowListBenefit.dart';
 import '../../../../utiles/assets/AppColors.dart';
 import '../../../../utiles/assets/languagePath.dart';
 import '../../../../utiles/assets/ImagePath.dart';

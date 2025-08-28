@@ -1,8 +1,7 @@
-
 import 'package:flutter/cupertino.dart';
 import '../../../../utiles/assets/FontSelectionData.dart';
 import '../../../../utiles/assets/Fontspath.dart';
-import 'package:sun_system/utiles/assets/AppColors.dart';
+import '../../../../utiles/assets/AppColors.dart';
 
 class TabWidgetCar extends StatelessWidget {
   final bool isSelected;

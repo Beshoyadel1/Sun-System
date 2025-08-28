@@ -3,7 +3,7 @@ import '../../../../view/Profile/ProfileWidget/ChooseFavouriteItem.dart';
 
 class RowChooseFavouriteItem extends StatelessWidget {
   final String text1, text2;
-  final String? text3; // only this can be optional
+  final String? text3;
 
   const RowChooseFavouriteItem({
     super.key,
