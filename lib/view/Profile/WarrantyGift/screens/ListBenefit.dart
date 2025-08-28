@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:sun_system/view/Profile/ProfileWidget/RowListBenefit.dart';
 import '../../../../utiles/assets/AppColors.dart';
 import '../../../../utiles/assets/languagePath.dart';
 import '../../../../utiles/assets/ImagePath.dart';
@@ -24,62 +25,11 @@ class ListBenefit extends StatelessWidget {
           maxLines: 1,
         ),
         const SizedBox(height: 20),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(ImagePath.correct, width: 20, height: 20),
-            const SizedBox(width: 8),
-            Expanded(
-              child: AppText(
-                text: LanguagePath.benefitFromServiceWarranty,
-                style: Fontspath.appTextStyle(
-                  fontSize: 14,
-                  fontWeightIndex: FontSelectionData.fontW500,
-                  color: AppColors.lightBlackColor,
-                ),
-                maxLines: null,
-              ),
-            ),
-          ],
-        ),
+        RowListBenefit(text: LanguagePath.benefitFromServiceWarranty,),
         const SizedBox(height: 20),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(ImagePath.correct, width: 20, height: 20),
-            const SizedBox(width: 8),
-            Expanded(
-              child: AppText(
-                text: LanguagePath.carsWarrantyMarket,
-                style: Fontspath.appTextStyle(
-                  fontSize: 14,
-                  fontWeightIndex: FontSelectionData.fontW500,
-                  color: AppColors.lightBlackColor,
-                ),
-                maxLines: null,
-              ),
-            ),
-          ],
-        ),
+        RowListBenefit(text: LanguagePath.carsWarrantyMarket,),
         const SizedBox(height: 20),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(ImagePath.correct, width: 20, height: 20),
-            const SizedBox(width: 8),
-            Expanded(
-              child: AppText(
-                text: LanguagePath.freeMaintenanceDuringWarranty,
-                style: Fontspath.appTextStyle(
-                  fontSize: 14,
-                  fontWeightIndex: FontSelectionData.fontW500,
-                  color: AppColors.lightBlackColor,
-                ),
-                maxLines: null,
-              ),
-            ),
-          ],
-        ),
+        RowListBenefit(text: LanguagePath.freeMaintenanceDuringWarranty,),
       ],
     );
   }

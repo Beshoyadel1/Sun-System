@@ -21,8 +21,8 @@ class RowSunWarranty extends StatelessWidget {
             color: AppColors.orangeColor,
           ),
           maxLines: 1,
-        ),fit: FlexFit.loose,)
-
+        ),
+          fit: FlexFit.loose,)
       ],
     );
   }
