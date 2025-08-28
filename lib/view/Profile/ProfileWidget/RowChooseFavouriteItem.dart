@@ -14,18 +14,13 @@ class RowChooseFavouriteItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return text3 == null
-        ? Row(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        ChooseFavouriteItem(textItem: text1),
-        ChooseFavouriteItem(textItem: text2),
-      ],
-    )
-        : Row(
-      children: [
-        ChooseFavouriteItem(textItem: text1),
-        ChooseFavouriteItem(textItem: text2),
-        ChooseFavouriteItem(textItem: text3!), // use ! here safely
+        Flexible(fit: FlexFit.loose, child: ChooseFavouriteItem(textItem: text1)),
+        Flexible(fit: FlexFit.loose, child: ChooseFavouriteItem(textItem: text2)),
+        if (text3 != null)
+          Flexible(fit: FlexFit.loose, child: ChooseFavouriteItem(textItem: text3!)),
       ],
     );
   }

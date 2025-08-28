@@ -52,10 +52,6 @@ class SignupView extends StatelessWidget {
               child: Center(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(20),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: isMobile ? 500 : isTablet ? 700 : 900,
-                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -119,7 +115,6 @@ class SignupView extends StatelessWidget {
                         LastRowSignup(),
                       ],
                     ),
-                  ),
                 ),
               ),
             ),

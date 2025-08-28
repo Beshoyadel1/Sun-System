@@ -40,10 +40,6 @@ class PreferredServices extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Center(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: isMobile ? 500 : isTablet ? 700 : 900,
-                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -80,7 +76,6 @@ class PreferredServices extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
                 ),
               ),
             ],

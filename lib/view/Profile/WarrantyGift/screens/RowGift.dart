@@ -13,17 +13,18 @@ class RowGift extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppText(
+        Flexible(child:AppText(
           text: LanguagePath.congratulationsGift,
           style: Fontspath.appTextStyle(
             fontSize: 20,
             fontWeightIndex: FontSelectionData.fontW500,
             color: AppColors.lightBlackColor,
           ),
-          maxLines: 1, // optional: keep single line
-        ),
+          maxLines: 1
+        ), fit: FlexFit.loose,),
+
         const SizedBox(width: 5,),
-        AppText(
+        Flexible(child: AppText(
           text: LanguagePath.warrantyGift,
           style: Fontspath.appTextStyle(
             fontSize: 20,
@@ -31,7 +32,8 @@ class RowGift extends StatelessWidget {
             color: AppColors.orangeColor,
           ),
           maxLines: 1, // optional: keep single line
-        ),
+        ), fit: FlexFit.loose,),
+
       ],
     );
   }

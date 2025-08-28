@@ -45,11 +45,7 @@ class _LoginState extends State<Login> {
               child: Center(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(20),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: isMobile ? 500 : isTablet ? 700 : 900,
-                    ),
-                    child: Column(
+                  child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Image.asset(ImagePath.logo, height: 80),
@@ -88,7 +84,7 @@ class _LoginState extends State<Login> {
                         const SizedBox(height: 30),
                       ],
                     ),
-                  ),
+
                 ),
               ),
             ),

@@ -13,15 +13,16 @@ class RowSunWarranty extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppText(
+        Flexible(child:AppText(
           text: LanguagePath.warrantySun,
           style: Fontspath.appTextStyle(
             fontSize: 36,
             fontWeightIndex: FontSelectionData.fontW500,
             color: AppColors.orangeColor,
           ),
-          maxLines: 1, // optional: keep single line
-        ),
+          maxLines: 1,
+        ),fit: FlexFit.loose,)
+
       ],
     );
   }
