@@ -109,16 +109,17 @@ class _OtpState extends State<Otp> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    AppText(
-                                      text: LanguagePath.iDidNotReceiveAMessage,
-                                      style: Fontspath.appTextStyle(
-                                        fontSize: 16,
-                                        fontWeightIndex: FontSelectionData.fontW400,
-                                        color: AppColors.blackColor,
-                                      ),
-                                    ),
+                                   Flexible(child:  AppText(
+                                     text: LanguagePath.iDidNotReceiveAMessage,
+                                     style: Fontspath.appTextStyle(
+                                       fontSize: 16,
+                                       fontWeightIndex: FontSelectionData.fontW400,
+                                       color: AppColors.blackColor,
+                                     ),
+                                   ),
+                                   ),
                                     const SizedBox(width: 8),
-                                    InkWell(
+                                    Flexible(child: InkWell(
                                       onTap: state.canResend
                                           ? () => context.read<OtpCubit>().startTimer()
                                           : null,
@@ -130,7 +131,7 @@ class _OtpState extends State<Otp> {
                                           color: AppColors.orangeColor,
                                         ),
                                       ),
-                                    ),
+                                    ),)
                                   ],
                                 ),
                               ],

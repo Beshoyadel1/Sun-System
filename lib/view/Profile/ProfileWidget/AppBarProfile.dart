@@ -18,14 +18,14 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
       leading: Image.asset(imagSrc),
       actions: [
         const SizedBox(width: 10,),
-        AppText(
+        Flexible(child: AppText(
           text: text,
           style: Fontspath.appTextStyle(
             fontSize: 18,
             fontWeightIndex: FontSelectionData.fontW400,
             color: AppColors.blackColor,
           ),
-        ),
+        ),),
         const SizedBox(width: 5,),
         Container(
           width: 40,

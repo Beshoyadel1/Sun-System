@@ -11,20 +11,24 @@ class FirstRowButtonFirstPage extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: AppButton(
-            backgroundcolor:
-            AppColors.orangeColor.withOpacity(0.6),
-            text: LanguagePath.registerAsIndividuals,
-            fontcolor: AppColors.whiteColor,
+          child: SizedBox(
+            height: 50, // حجم الزر
+            child: AppButton(
+              backgroundcolor: AppColors.orangeColor.withOpacity(0.6),
+              text: LanguagePath.registerAsIndividuals,
+              fontcolor: AppColors.whiteColor,
+            ),
           ),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: AppButton(
-            backgroundcolor:
-            AppColors.darkBlueColor.withOpacity(0.6),
-            text: LanguagePath.registerAsCompanies,
-            fontcolor: AppColors.whiteColor,
+          child: SizedBox(
+            height: 50,
+            child: AppButton(
+              backgroundcolor: AppColors.darkBlueColor.withOpacity(0.6),
+              text: LanguagePath.registerAsCompanies,
+              fontcolor: AppColors.whiteColor,
+            ),
           ),
         ),
       ],

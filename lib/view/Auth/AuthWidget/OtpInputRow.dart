@@ -17,11 +17,11 @@ class OtpInputRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: List.generate(4, (index) {
-        return OtpBox(
+        return Flexible(child: OtpBox(
           controller: controllers[index],
           focusNode: focusNodes[index],
           nextFocusNode: index < 3 ? focusNodes[index + 1] : null,
-        );
+        ));
       }),
     );
   }

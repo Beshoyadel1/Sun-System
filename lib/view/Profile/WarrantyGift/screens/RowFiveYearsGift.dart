@@ -14,7 +14,7 @@ class RowFiveYearsGift extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppText(
+        Flexible(child: AppText(
           text: LanguagePath.fiveYearsGift,
           style: Fontspath.appTextStyle(
             fontSize: 20,
@@ -22,7 +22,7 @@ class RowFiveYearsGift extends StatelessWidget {
             color: AppColors.blackColor,
           ),
           maxLines: 1, // optional: keep single line
-        ),
+        ),)
       ],
     );
   }

@@ -23,7 +23,7 @@ class RowForgetPassword extends StatelessWidget {
           maxLines: 1,
         ),),
         const SizedBox(width: 12),
-        AppText(
+        Flexible(child: AppText(
           text: LanguagePath.redeemHere,
           style: Fontspath.appTextStyle(
             fontSize: 14,
@@ -32,7 +32,7 @@ class RowForgetPassword extends StatelessWidget {
             color: AppColors.orangeColor.withOpacity(0.8),
           ),
           maxLines: 1,
-        ),
+        ),)
       ],
     );
   }

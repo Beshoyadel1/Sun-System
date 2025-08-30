@@ -14,7 +14,7 @@ class RowLineTextFirstPage extends StatelessWidget {
     return Row(
       children: [
         const Expanded(child: LineAuth()),
-        Padding(
+        Flexible(child: Padding(
           padding:
           const EdgeInsets.symmetric(horizontal: 8),
           child: AppText(
@@ -25,7 +25,7 @@ class RowLineTextFirstPage extends StatelessWidget {
               color: AppColors.darkBlueColor,
             ),
           ),
-        ),
+        ),),
         const Expanded(child: LineAuth()),
       ],
     );

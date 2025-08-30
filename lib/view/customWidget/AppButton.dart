@@ -40,13 +40,13 @@ class AppButton extends StatelessWidget {
             : Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            AppText(
+            Flexible(child: AppText(
               text: text,
               style: TextStyle(
                 color: fontcolor,
                 fontWeight: FontWeight.bold,
               ),
-            ),
+            ),),
             Image.asset(image!)
           ],
         ),
