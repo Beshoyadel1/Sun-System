@@ -14,14 +14,15 @@ class LastRowSignup extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppText(
+        Flexible(child: AppText(
           text: LanguagePath.createAnAccountInTheNameOfACompany,
           style: Fontspath.appTextStyle(
             fontSize: 16,
             color: AppColors.blackColor,
             fontWeightIndex: FontSelectionData.fontW600,
           ),
-        ),
+          maxLines: 1,
+        ),),
         const SizedBox(width: 8),
         InkWell(
           onTap: () {},

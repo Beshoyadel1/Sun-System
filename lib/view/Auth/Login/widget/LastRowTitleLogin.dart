@@ -16,13 +16,15 @@ class LastRowTitleLogin extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppText(
+        Flexible(child:AppText(
           text: LanguagePath.dontHaveAccount,
           style: Fontspath.appTextStyle(
             fontSize: 16,
             fontWeightIndex: FontSelectionData.fontW600,
             color: AppColors.blackColor,
           ),
+          maxLines: 1,
+        ),
         ),
         const SizedBox(width: 6),
         InkWell(

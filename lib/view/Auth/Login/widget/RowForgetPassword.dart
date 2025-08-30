@@ -12,14 +12,16 @@ class RowForgetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        AppText(
+        Flexible(
+          child:AppText(
           text: LanguagePath.forgetPassword,
           style: Fontspath.appTextStyle(
             fontSize: 16,
             fontWeightIndex: FontSelectionData.fontW600,
             color: AppColors.blackColor,
           ),
-        ),
+          maxLines: 1,
+        ),),
         const SizedBox(width: 12),
         AppText(
           text: LanguagePath.redeemHere,
@@ -29,6 +31,7 @@ class RowForgetPassword extends StatelessWidget {
             fontWeightIndex: FontSelectionData.fontW600,
             color: AppColors.orangeColor.withOpacity(0.8),
           ),
+          maxLines: 1,
         ),
       ],
     );

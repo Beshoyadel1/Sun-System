@@ -25,7 +25,7 @@ class FirstTitleOTP extends StatelessWidget {
         AppText(
           text: LanguagePath.pleaseEnterThePasswordSentToYourPhoneNumber,
           style: Fontspath.appTextStyle(
-            fontSize: 14,
+            fontSize: 13,
             fontWeightIndex: FontSelectionData.fontW400,
             color: AppColors.lightBlackColor,
           ),
