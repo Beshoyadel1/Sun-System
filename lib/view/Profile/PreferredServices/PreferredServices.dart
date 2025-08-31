@@ -62,6 +62,7 @@ class PreferredServices extends StatelessWidget {
                           builder: (context, selectedItems) {
                             final canGoNext = context.read<FavouriteCubit>().canGoNext;
                             return LastButtonProfileScreen(
+                              widthText: 300,
                               nextColor: canGoNext ? AppColors.darkBlueColor : AppColors.grayColor,
                               prevColor: AppColors.orangeColor,
                               onTap: canGoNext

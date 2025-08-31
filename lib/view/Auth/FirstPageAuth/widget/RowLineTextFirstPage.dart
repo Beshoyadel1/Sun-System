@@ -12,6 +12,7 @@ class RowLineTextFirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Expanded(child: LineAuth()),
         Flexible(child: Padding(

@@ -59,6 +59,7 @@ class _MapScreenState extends State<MapScreen> {
                         ),
                       ),
                       LastButtonProfileScreen(
+                        widthText: 300,
                         nextColor: AppColors.darkBlueColor,
                         prevColor: AppColors.orangeColor,
                         onTap: (){

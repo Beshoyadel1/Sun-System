@@ -8,10 +8,16 @@ class LastButtonWarrantyGift extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppButton(
-      backgroundcolor: AppColors.orangeColor,
-      text: LanguagePath.showServicesNow,
-      fontcolor: AppColors.whiteColor,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AppButton(
+          widthText: 300,
+          backgroundcolor: AppColors.orangeColor,
+          text: LanguagePath.showServicesNow,
+          fontcolor: AppColors.whiteColor,
+        ),
+      ],
     );
   }
 }

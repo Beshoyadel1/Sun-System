@@ -13,6 +13,8 @@ class AppTextFeild extends StatefulWidget {
   final String? Function(String?)? validator;
   final bool isIcon;
   final Icon? icon;
+  final double? widthText;
+  final double? heightText;
 
   const AppTextFeild({
     super.key,
@@ -24,6 +26,8 @@ class AppTextFeild extends StatefulWidget {
     this.onChanged,
     this.validator,
     this.icon,
+    this.widthText,
+    this.heightText,
     this.isIcon = false,
   });
 
@@ -50,45 +54,49 @@ class _AppLabeledTextFieldState extends State<AppTextFeild> {
               ),
             ),
           ),
-        TextFormField(
-          controller: widget.controller,
-          keyboardType:
-          widget.isNumber ? TextInputType.number : TextInputType.text,
-          obscureText: widget.isPassword,
-          inputFormatters: widget.isNumber
-              ? [FilteringTextInputFormatter.digitsOnly]
-              : null,
-          validator: widget.validator,
-          onChanged: widget.onChanged,
-
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            hintText: translated,
-            hintStyle: TextStyle(
-              fontSize: 12,
-              color: AppColors.grayColor.withOpacity(0.6),
-            ),
-            prefixIcon: widget.isIcon
-                ? (widget.icon ?? Icon(
-              Icons.search,
-              color: AppColors.grayColor.withOpacity(0.6),
-            ))
+        SizedBox(
+          height: widget.heightText,
+          width: widget.widthText,
+          child: TextFormField(
+            controller: widget.controller,
+            keyboardType:
+            widget.isNumber ? TextInputType.number : TextInputType.text,
+            obscureText: widget.isPassword,
+            inputFormatters: widget.isNumber
+                ? [FilteringTextInputFormatter.digitsOnly]
                 : null,
-            contentPadding:
-            const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: BorderSide(
-                color: AppColors.grayColor.withOpacity(0.5),
-                width: 1,
+            validator: widget.validator,
+            onChanged: widget.onChanged,
+
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              hintText: translated,
+              hintStyle: TextStyle(
+                fontSize: 12,
+                color: AppColors.grayColor.withOpacity(0.6),
               ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: BorderSide(
-                color: AppColors.orangeColor.withOpacity(0.7),
-                width: 1,
+              prefixIcon: widget.isIcon
+                  ? (widget.icon ?? Icon(
+                Icons.search,
+                color: AppColors.grayColor.withOpacity(0.6),
+              ))
+                  : null,
+              contentPadding:
+              const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide(
+                  color: AppColors.grayColor.withOpacity(0.5),
+                  width: 1,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide(
+                  color: AppColors.orangeColor.withOpacity(0.7),
+                  width: 1,
+                ),
               ),
             ),
           ),

@@ -1,5 +1,5 @@
-// SignupView.dart
 import 'package:flutter/material.dart';
+import '../../../view/Auth/Signup/widget/RowButtoncreateAccount.dart';
 import '../../../view/Auth/Signup/widget/FirstTitleSignup.dart';
 import '../../../view/Auth/Signup/widget/LastRowSignup.dart';
 import '../../../utiles/assets/AppColors.dart';
@@ -37,9 +37,6 @@ class SignupView extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
-    bool isTablet =
-        size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
     bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
 
     return Scaffold(
@@ -93,24 +90,7 @@ class SignupView extends StatelessWidget {
                           isPassword: true,
                         ),
                         const SizedBox(height: 30),
-                        BlocBuilder<SignupCubit, bool>(
-                          builder: (context, isClick) {
-                            return AppButton(
-                              backgroundcolor: isClick
-                                  ? AppColors.orangeColor
-                                  : AppColors.grayColor,
-                              text: LanguagePath.createAccount,
-                              fontcolor: AppColors.whiteColor,
-                              onTap: () {
-                                if (isClick) {
-                                  Navigator.of(context).push(
-                                    NavigateToPageWidget(const Otp()),
-                                  );
-                                }
-                              },
-                            );
-                          },
-                        ),
+                        RowButtoncreateAccount(),
                         const SizedBox(height: 30),
                         LastRowSignup(),
                       ],
@@ -118,7 +98,6 @@ class SignupView extends StatelessWidget {
                 ),
               ),
             ),
-
             if (isDesktop) const backgroundDesktop(),
           ],
         ),

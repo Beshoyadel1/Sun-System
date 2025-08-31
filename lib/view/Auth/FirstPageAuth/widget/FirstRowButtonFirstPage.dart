@@ -9,27 +9,24 @@ class FirstRowButtonFirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          child: SizedBox(
-            height: 50, // حجم الزر
+        Flexible(
             child: AppButton(
+              widthText: 200,
               backgroundcolor: AppColors.orangeColor.withOpacity(0.6),
               text: LanguagePath.registerAsIndividuals,
               fontcolor: AppColors.whiteColor,
             ),
-          ),
         ),
         const SizedBox(width: 12),
-        Expanded(
-          child: SizedBox(
-            height: 50,
+        Flexible(
             child: AppButton(
+              widthText: 200,
               backgroundcolor: AppColors.darkBlueColor.withOpacity(0.6),
               text: LanguagePath.registerAsCompanies,
               fontcolor: AppColors.whiteColor,
             ),
-          ),
         ),
       ],
     );

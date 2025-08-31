@@ -7,12 +7,16 @@ import '../../../../view/customWidget/AppButton.dart';
 class LastButtonProfileScreen extends StatelessWidget {
   final Color prevColor, nextColor;
   final VoidCallback? onTap; // make nullable
+  final double? widthText; //     this.widthText,
+  final double? heightText;
 
   LastButtonProfileScreen({
     super.key,
     required this.prevColor,
     required this.nextColor,
-    this.onTap, // optional
+    this.onTap,
+    this.widthText,
+    this.heightText,
   });
 
   @override
@@ -36,8 +40,9 @@ class LastButtonProfileScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
+          Flexible(
             child: AppButton(
+              widthText: widthText,
               onTap: () {
                 Navigator.pop(context);
               },
@@ -47,8 +52,9 @@ class LastButtonProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 16),
-          Expanded(
+          Flexible(
             child: AppButton(
+              widthText: widthText,
               onTap: onTap,
               backgroundcolor: nextColor,
               text: LanguagePath.next,

@@ -54,7 +54,6 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
                         LastRowTitleFirstPage(),
                       ],
                     ),
-
                 ),
               ),
             ),

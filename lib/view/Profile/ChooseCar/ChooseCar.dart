@@ -27,12 +27,6 @@ class _ChooseCarState extends State<ChooseCar> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-    bool isMobile = size.width <= ValuesOfAllApp.mobileWidth;
-    bool isTablet =
-        size.width > ValuesOfAllApp.mobileWidth && size.width <= ValuesOfAllApp.tabWidth;
-    bool isDesktop = size.width > ValuesOfAllApp.tabWidth;
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBarProfile(
@@ -58,21 +52,20 @@ class _ChooseCarState extends State<ChooseCar> {
                               const SizedBox(height: 40),
                               RowNameExampleCar(),
                               const SizedBox(height: 10),
-                              AppTextFeild(),
+                              AppTextFeild(
+                                widthText: 500,
+                              ),
                               const SizedBox(height: 45),
                               chooseModelCarText(),
                               const SizedBox(height: 10),
-                              FractionallySizedBox(
-                                alignment: Alignment.topRight,
-                                widthFactor: 0.5,
-                                child: AppTextFeild(
-                                  isIcon: true,
-                                  icon: Icon(
-                                    Icons.search,
-                                    color: AppColors.grayColor.withOpacity(0.6),
-                                  ),
-                                  hintText: LanguagePath.youCanSearchToSelectYourCarCategory,
+                              AppTextFeild(
+                                widthText: 250,
+                                isIcon: true,
+                                icon: Icon(
+                                  Icons.search,
+                                  color: AppColors.grayColor.withOpacity(0.6),
                                 ),
+                                hintText: LanguagePath.youCanSearchToSelectYourCarCategory,
                               ),
                               const SizedBox(height: 20),
                               DefaultTabController(
@@ -91,6 +84,7 @@ class _ChooseCarState extends State<ChooseCar> {
                         ),
                       ),
                       LastButtonProfileScreen(
+                        widthText: 300,
                         nextColor: AppColors.darkBlueColor,
                         prevColor: AppColors.orangeColor,
                         onTap: (){

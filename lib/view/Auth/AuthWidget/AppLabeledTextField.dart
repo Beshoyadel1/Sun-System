@@ -41,6 +41,7 @@ class AppLabeledTextField extends StatelessWidget {
         ),
         SizedBox(height: spacing),
         AppTextFeild(
+          widthText: 500,
           controller: controller,
           isPassword: isPassword,
           isNumber: isNumber,

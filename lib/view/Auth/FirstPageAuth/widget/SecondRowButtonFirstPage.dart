@@ -10,9 +10,11 @@ class SecondRowButtonFirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        Flexible(
           child: AppButton(
+            widthText: 200,
             backgroundcolor: AppColors.lineColor,
             text: LanguagePath.appleAccount,
             fontcolor: AppColors.darkBlueColor,
@@ -20,8 +22,9 @@ class SecondRowButtonFirstPage extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 15),
-        Expanded(
+        Flexible(
           child: AppButton(
+            widthText: 200,
             backgroundcolor: AppColors.lineColor,
             text: LanguagePath.google,
             fontcolor: AppColors.darkBlueColor,
